@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { Badge } from "@/blocks/Badge";
-import { Sidebar } from "@/features/Layout/components/Sidebar";
+import { Sidebar } from "@/features/Layout/components/SideBar/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 

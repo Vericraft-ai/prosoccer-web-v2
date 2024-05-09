@@ -1,4 +1,4 @@
-import { SidebarMenuTypes } from "../@types";
+import { SidebarMenuTypes } from "../../@types";
 import {
   HomeIcon,
   PersonIcon,
