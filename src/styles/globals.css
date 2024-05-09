@@ -4,7 +4,7 @@
 
   @layer base {
     :root {
-      --background: 0 0% 100%;
+      --background: #1F1D2B;
       --foreground: 222.2 84% 4.9%;
 
       --card: 0 0% 100%;
@@ -72,5 +72,13 @@
     }
     body {
       @apply bg-background text-foreground;
+    }
+    h2 {
+      @apply  text-[#FEFEFE] text-xl;
+    }
+    li {
+      @apply text-custom-white text-lg flex items-center py-4 pl-4 gap-x-3 gap-y-3
+      hover:bg-custom-gray hover:text-white cursor-pointer transition-colors hover:border-l-[3px]
+      border-custom-blue last:absolute last:bottom-4 last:min-w-[283px];
     }
   }
