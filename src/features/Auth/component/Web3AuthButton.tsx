@@ -22,21 +22,10 @@ export const Web3AuthButton = () => {
           chain &&
           (!authenticationStatus || authenticationStatus === "authenticated");
         return (
-          <div
-            {...(!ready && {
-              "aria-hidden": true,
-              style: {
-                opacity: 0,
-                pointerEvents: "none",
-                userSelect: "none",
-              },
-            })}
-          >
+          <div className="flex justify-end">
             {(() => {
               if (!connected) {
-                return (
-                  <Button onClick={openConnectModal}>Connect</Button>
-                );
+                return <Button onClick={openConnectModal}>Connect</Button>;
               }
               if (chain.unsupported) {
                 return <Button onClick={openChainModal}>Wrong network</Button>;

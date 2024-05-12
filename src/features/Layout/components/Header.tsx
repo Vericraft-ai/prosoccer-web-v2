@@ -6,7 +6,7 @@ type HeaderProps = {
 
 export const Header = ({ children }: HeaderProps) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between w-full mx-8 my-12">
       {children}
       <Web3AuthButton />
     </div>

@@ -25,6 +25,7 @@ const config = {
         vegeta: "var(--vegeta)",
         bulma: "var(--bulma)",
         broly: "var(--broly)",
+        frieza: "var(--frieza)",
       },
       keyframes: {
         "accordion-down": {
