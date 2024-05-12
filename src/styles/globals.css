@@ -11,6 +11,7 @@
     --bulma: #1f1d2b;
     --broly: #fefefe;
     --frieza: #718096;
+    --piccolo: #2A2836;
   }
 
   .dark {
@@ -21,5 +22,6 @@
     --bulma: #1f1d2b;
     --broly: #fefefe;
     --frieza: #718096;
+    --piccolo: #2A2836;
   }
 }
