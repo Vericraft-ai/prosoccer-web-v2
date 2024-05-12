@@ -26,6 +26,7 @@ const config = {
         bulma: "var(--bulma)",
         broly: "var(--broly)",
         frieza: "var(--frieza)",
+        piccolo: "var(--piccolo)",
       },
       keyframes: {
         "accordion-down": {
