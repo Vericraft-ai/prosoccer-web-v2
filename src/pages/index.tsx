@@ -4,8 +4,7 @@ import { Wrapper } from "@/features/Layout/components/Wrapper";
 export default function Home() {
   return (
     <Wrapper>
-      <Header >
-      </Header>
+      <Header hasSearchBar></Header>
     </Wrapper>
   );
 }
