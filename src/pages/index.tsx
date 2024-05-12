@@ -1,14 +1,12 @@
-import { Inter } from "next/font/google";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Sidebar } from "@/features/Layout/components/Sidebar";
+import { Header } from "@/features/Layout/components/Header";
+import { Wrapper } from "@/features/Layout/components/Wrapper";
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <ConnectButton />
-    </main>
+    <Wrapper className="flex min-h-screen">
+      <Sidebar />
+      <Header />
+    </Wrapper>
   );
 }
