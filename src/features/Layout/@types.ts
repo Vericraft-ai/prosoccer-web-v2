@@ -21,3 +21,11 @@ export type HomePageTabsProps = {
   title?: string;
   icon?: React.ReactNode;
 }[];
+
+
+export type CardProps = {
+  logo?: React.ReactNode;
+  text?: string | string[];
+  bagde?: React.ReactNode;
+  icon?: React.ReactNode;
+};
