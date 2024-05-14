@@ -5,7 +5,8 @@ import { HeaderBannerProps } from "../@types";
 import { HomePageTabs } from "./HomePageTabs";
 import { Gamepad2, Trophy } from "lucide-react";
 import { MatchTable } from "./MatchTable";
-import { CompetitionBlock } from "./CompetitionBlock";
+import { CompetitionsBlock } from "./CompetitionsBlock";
+import { TopScorerBlock } from "./TopScorerBlock";
 
 export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
   const tabList = [
@@ -76,7 +77,8 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
       </div>
 
       <aside className="flex flex-col">
-        <CompetitionBlock />
+        <CompetitionsBlock />
+        <TopScorerBlock />
       </aside>
     </div>
   );

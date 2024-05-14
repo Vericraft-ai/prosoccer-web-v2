@@ -3,13 +3,16 @@ import { CardOne } from "./CardOne";
 import { Gamepad2, MoveRight } from "lucide-react";
 import { CardTwo } from "./CardTwo";
 import { Button } from "@/blocks/components/Button";
+import Link from "next/link";
 
-export const CompetitionBlock = () => {
+export const CompetitionsBlock = () => {
   return (
     <div className="mt-10">
       <div className="flex flex-row justify-between w-full">
         <span className="text-broly">Competitions</span>
-        <span className="text-vegeta">View all</span>
+        <Link href="/" className="text-vegeta">
+          View all
+        </Link>
       </div>
       <CardOne
         logo={<Gamepad2 size={33} />}

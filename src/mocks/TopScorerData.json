@@ -1,0 +1,50 @@
+[
+  {
+    "player_id": 1,
+    "player_name": "Townsend Claworth",
+    "team_name": "Barcelona",
+    "goals_scored": 33,
+    "matches_played": 17,
+    "position": "Defender"
+  },
+  {
+    "player_id": 2,
+    "player_name": "Aldus Bamfield",
+    "team_name": "Manchester United",
+    "goals_scored": 15,
+    "matches_played": 2,
+    "position": "Forward"
+  },
+  {
+    "player_id": 3,
+    "player_name": "Tish Leathwood",
+    "team_name": "Manchester United",
+    "goals_scored": 0,
+    "matches_played": 27,
+    "position": "Forward"
+  },
+  {
+    "player_id": 4,
+    "player_name": "Lesya Saltern",
+    "team_name": "Barcelona",
+    "goals_scored": 27,
+    "matches_played": 46,
+    "position": "Forward"
+  },
+  {
+    "player_id": 5,
+    "player_name": "Honey Raylton",
+    "team_name": "Manchester United",
+    "goals_scored": 10,
+    "matches_played": 23,
+    "position": "Forward"
+  },
+  {
+    "player_id": 6,
+    "player_name": "Phillip Haycraft",
+    "team_name": "Real Madrid",
+    "goals_scored": 15,
+    "matches_played": 36,
+    "position": "Forward"
+  }
+]
