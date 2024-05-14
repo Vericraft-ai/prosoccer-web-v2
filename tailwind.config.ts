@@ -28,6 +28,7 @@ const config = {
         frieza: "var(--frieza)",
         piccolo: "var(--piccolo)",
         popo: "var(--popo)",
+        zeno: "var(--zeno)",
       },
       keyframes: {
         "accordion-down": {
