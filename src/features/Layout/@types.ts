@@ -15,3 +15,9 @@ export type HeaderBannerProps = {
   content?: string;
   image?: React.ReactSVGElement;
 };
+
+export type HomePageTabsProps = {
+  children?: React.ReactNode;
+  title?: string;
+  icon?: React.ReactNode;
+}[];

@@ -2,8 +2,22 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/blocks/components/Button";
 import { HeaderBannerProps } from "../@types";
+import { HomePageTabs } from "./HomePageTabs";
+import { Gamepad2, Trophy } from "lucide-react";
 
 export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
+  const tabList = [
+    {
+      title: "Matches",
+      icon: <Gamepad2 size={33} />,
+      children: <div>Matches</div>
+    },
+    {
+      title: "Standings",
+      icon: <Trophy size={30} />,
+      children: <div>Standings</div>
+    }
+  ];
   return (
     <div className="banner-wrapper">
       {/* league banner section */}
@@ -53,6 +67,8 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
           </Link>
         </div>
       </div>
+
+      <HomePageTabs tabs={tabList} />
     </div>
   );
 };
