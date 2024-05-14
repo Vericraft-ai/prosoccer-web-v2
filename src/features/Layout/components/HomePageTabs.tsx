@@ -12,7 +12,7 @@ export const HomePageTabs: React.FC<{ tabs: HomePageTabsProps }> = ({
 }) => {
   return (
     <div className="text-broly">
-      <Tabs defaultValue={tabs[0]?.title} className="w-[400px]">
+      <Tabs defaultValue={tabs[0]?.title} className="w-full">
         <TabsList>
           {tabs?.map((tab, index) => (
             <TabsTrigger

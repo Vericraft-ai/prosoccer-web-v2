@@ -1,0 +1,47 @@
+[
+  {
+    "matchId": "1",
+    "homeTeam": "USA",
+    "homeTeamIcon": "https://robohash.org/liberoeaet.png?size=50x50&set=set1",
+    "awayTeam": "Canada",
+    "awayTeamIcon": "https://robohash.org/consequunturofficiisvoluptatem.png?size=50x50&set=set1",
+    "homeTeamScore": 4,
+    "awayTeamScore": 10
+  },
+  {
+    "matchId": "2",
+    "homeTeam": "Germany",
+    "homeTeamIcon": "https://robohash.org/velitquascumque.png?size=50x50&set=set1",
+    "awayTeam": "France",
+    "awayTeamIcon": "https://robohash.org/quiassumendaconsectetur.png?size=50x50&set=set1",
+    "homeTeamScore": 10,
+    "awayTeamScore": 4
+  },
+  {
+    "matchId": "3",
+    "homeTeam": "Greece",
+    "homeTeamIcon": "https://robohash.org/estoditenim.png?size=50x50&set=set1",
+    "awayTeam": "Italy",
+    "awayTeamIcon": "https://robohash.org/asperioresquieaque.png?size=50x50&set=set1",
+    "homeTeamScore": 4,
+    "awayTeamScore": 4
+  },
+  {
+    "matchId": "4",
+    "homeTeam": "teama",
+    "homeTeamIcon": "https://robohash.org/quianamqui.png?size=50x50&set=set1",
+    "awayTeam": "teamb",
+    "awayTeamIcon": "https://robohash.org/quasvoluptatessed.png?size=50x50&set=set1",
+    "homeTeamScore": 9,
+    "awayTeamScore": 10
+  },
+  {
+    "matchId": "5",
+    "homeTeam": "Cambodia",
+    "homeTeamIcon": "https://robohash.org/doloresquasasperiores.png?size=50x50&set=set1",
+    "awayTeam": "Vietnam",
+    "awayTeamIcon": "https://robohash.org/idvoluptatumnecessitatibus.png?size=50x50&set=set1",
+    "homeTeamScore": 3,
+    "awayTeamScore": 1
+  }
+]
