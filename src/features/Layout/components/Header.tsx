@@ -18,7 +18,8 @@ export const Header = ({ children, hasSearchBar }: HeaderProps) => {
         </div>
       )}
       {!hasSearchBar && <Web3AuthButton />}
-      <HeaderBanner />
+      {/* commented on purpose */}
+      {/* <HeaderBanner /> */}
     </div>
   );
 };

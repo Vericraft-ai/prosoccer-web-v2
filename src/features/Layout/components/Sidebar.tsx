@@ -4,7 +4,7 @@ import {
   PersonIcon,
   BarChartIcon,
   TransformIcon,
-  DashboardIcon,
+  DashboardIcon
 } from "@radix-ui/react-icons";
 import { CircleArrowLeft } from "lucide-react";
 
@@ -13,33 +13,33 @@ export const Sidebar = () => {
     {
       title: "Home",
       icon: <HomeIcon />,
-      href: "/dashboard",
+      href: "/"
     },
     {
       title: "Squad",
       icon: <PersonIcon />,
-      href: "/squad",
+      href: "/squad"
     },
     {
       title: "Market",
       icon: <BarChartIcon />,
-      href: "/market",
+      href: "/marketplace"
     },
     {
       title: "Training",
       icon: <TransformIcon />,
-      href: "/training",
+      href: "/training"
     },
     {
       title: "Club",
       icon: <DashboardIcon />,
-      href: "/club",
+      href: "/club"
     },
     {
       title: "Logout",
       icon: <CircleArrowLeft height={15} width={15} />,
-      href: "/logout",
-    },
+      href: "/logout"
+    }
   ];
 
   return (
