@@ -18,7 +18,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
       placeholder="Search match"
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      className="bg-piccolo px-3 py-1 text-sm text-broly pl-10"
+      className="bg-piccolo px-3 py-1 text-sm text-broly pl-10 border-0 rounded-xl"
     />
   );
 };
