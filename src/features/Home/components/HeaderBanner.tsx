@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/blocks/components/Button";
-import { HeaderBannerProps } from "../@types";
+import { HeaderBannerProps } from "../../Layout/@types";
 import { HomePageTabs } from "./HomePageTabs";
 import { Gamepad2, Trophy } from "lucide-react";
 import { MatchTable } from "./MatchTable";
@@ -23,9 +23,9 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
   ];
 
   return (
-    <div className="banner-wrapper flex flex-row justify-between">
+    <div className="banner-wrapper flex flex-row  justify-between">
       {/* league banner section */}
-      <div className="flex flex-col">
+      <div className="flex flex-col w-6/12">
         <section className="flex flex-row w-full my-12 space-x-6">
           <div className="flex flex-row bg-piccolo rounded-xl text-broly">
             <div className="w-[333px] p-4 grid grid-cols content-center ">

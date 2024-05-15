@@ -5,7 +5,7 @@ import {
   TabsList,
   TabsTrigger
 } from "@/blocks/components/Tabs";
-import { HomePageTabsProps } from "../@types";
+import { HomePageTabsProps } from "../../Layout/@types";
 
 export const HomePageTabs: React.FC<{ tabs: HomePageTabsProps }> = ({
   tabs

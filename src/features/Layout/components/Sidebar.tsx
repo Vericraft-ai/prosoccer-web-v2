@@ -23,7 +23,7 @@ export const Sidebar = () => {
     {
       title: "Market",
       icon: <BarChartIcon />,
-      href: "/marketplace"
+      href: "/marketplace/bundle"
     },
     {
       title: "Training",

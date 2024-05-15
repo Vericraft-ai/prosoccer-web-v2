@@ -1,5 +1,5 @@
 import React from "react";
-import { CardProps } from "../@types";
+import { CardProps } from "../../Layout/@types";
 
 export const CardTwo: React.FC<CardProps> = ({ logo, text, bagde }) => {
   return (
