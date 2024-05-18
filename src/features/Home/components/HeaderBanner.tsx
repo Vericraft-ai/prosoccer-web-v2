@@ -37,11 +37,11 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
                 start winning prizes
               </p>
               {/* this button will accept the call to action link */}
-              <Button className="text-sm bg-popo px-2 py-4 whitespace-nowrap">
+              <Button className="text-sm bg-popo px-2 py-4 whitespace-nowrap w-[50%]">
                 <Link href="/">Join Pro Soccer League</Link>
               </Button>
             </div>
-            <div className="relative">
+            <div className="relative w-full">
               <img
                 src="/banner1.svg"
                 alt="banner-background"
