@@ -25,7 +25,7 @@ export const MatchTable = () => {
               {match.awayTeamScore}
             </TableCell>
             <TableCell className="text-center ">{match.awayTeam}</TableCell>
-            <TableCell className="bg-zeno rounded-lg text-center justify-center w-24">
+            <TableCell className="bg-zeno/15 rounded-lg text-center justify-center w-24">
               {"Full-Time"}
             </TableCell>
           </TableRow>
