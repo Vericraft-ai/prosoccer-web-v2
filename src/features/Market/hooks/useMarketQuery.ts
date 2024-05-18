@@ -4,12 +4,12 @@ export const useMarketQuery = () => {
       {
         id: 1,
         image:
-          "https://violet-added-ermine-455.mypinata.cloud/ipfs/QmNLmmV1gkbFHwpsxPw1LdnUkQc9NwJZhswKVxtQoSTXfD",
+          "https://violet-added-ermine-455.mypinata.cloud/ipfs/QmWY4YynggQyxZBWJYGiV3313vPX2V8ERTeM3Y8XEkEMyR",
         playerCount: 12,
-        Age: 33,
-        SpecialAbilities: 1,
-        Price: 1000,
-        abilities: "44",
+        age: 33,
+        specialAbilities: 1,
+        price: 1000,
+        abilities: 44,
       },
     ],
   };

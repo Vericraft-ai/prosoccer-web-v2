@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <Wrapper className="flex flex-row">
       <Header hasSearchBar>
+        
         <HeaderBanner />
       </Header>
     </Wrapper>

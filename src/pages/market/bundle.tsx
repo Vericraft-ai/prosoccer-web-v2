@@ -6,10 +6,12 @@ import { MarketCards } from "@/features/Market/components/MarketCards";
 export default function Home() {
   return (
     <Wrapper>
-      <Header>
-        <HeaderLinks />
-      </Header>
-      {/* <MarketCards /> */}
+      <div className="w-full">
+        <Header>
+          <HeaderLinks />
+        </Header>
+        <MarketCards />
+      </div>
     </Wrapper>
   );
 }

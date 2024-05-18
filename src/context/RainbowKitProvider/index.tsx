@@ -6,8 +6,10 @@ import {
 import { ProviderType } from "../@types";
 import { authenticationAdapter } from "./adapter";
 
-export const RainbowKitProvider = ({ children }: ProviderType) => {
-  const AUTHENTICATION_STATUS: AuthenticationStatus = "unauthenticated";
+export const RainbowKitProvider = ({ children, token }: ProviderType) => {
+  const AUTHENTICATION_STATUS: AuthenticationStatus = token
+    ? "authenticated"
+    : "unauthenticated";
   return (
     <RainbowKitAuthenticationProvider
       adapter={authenticationAdapter}

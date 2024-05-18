@@ -1,12 +1,24 @@
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import type { AppContext, AppProps } from "next/app";
 import "@rainbow-me/rainbowkit/styles.css";
 import { Providers } from "@/context";
+import { initGetInitialProps } from "@/features/Layout/utils/nextProps";
 
-export default function App({ Component, pageProps }: AppProps) {
+type AppPropsExtended = AppProps & {
+  token?: string;
+};
+
+export default function App({ Component, pageProps, token }: AppPropsExtended) {
+  console.log(token);
   return (
-    <Providers>
+    <Providers token={token}>
       <Component {...pageProps} />
     </Providers>
   );
 }
+
+App.getInitialProps = async (context: AppContext) => {
+  const props = await initGetInitialProps(context);
+  console.log(props);
+  return initGetInitialProps(context);
+};

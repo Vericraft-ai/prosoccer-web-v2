@@ -49,9 +49,10 @@ export const Web3AuthButton = () => {
                       >
                         {chain.iconUrl && (
                           <Image
+                            width={12}
+                            height={12}
                             alt={chain.name ?? "Chain icon"}
                             src={chain.iconUrl}
-                            style={{ width: 12, height: 12 }}
                           />
                         )}
                       </div>
