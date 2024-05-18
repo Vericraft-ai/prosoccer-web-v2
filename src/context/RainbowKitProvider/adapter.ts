@@ -44,4 +44,5 @@ export const authenticationAdapter = createAuthenticationAdapter({
       Router.reload();
     }
   },
+  
 });

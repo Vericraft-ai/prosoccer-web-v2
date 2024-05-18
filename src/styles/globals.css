@@ -4,28 +4,28 @@
 
 @layer base {
   :root {
-    --goku: #3d41f4;
-    --vegeta: #039cec;
-    --trunks: #c7d0cf;
-    --gohan: #232426;
-    --bulma: #1f1d2b;
-    --broly: #fefefe;
-    --frieza: #718096;
-    --piccolo: #2A2836;
-    --popo: #01050F;
-    --zeno: rgba(199, 208, 207, 0.16)
-  }
+    --goku: 61 65 244;
+    --vegeta: 3 156 236;
+    --trunks: 199 208 207;
+    --gohan: 35 36 38;
+    --bulma: 31 29 43;
+    --broly: 254 254 254;
+    --frieza: 113 128 150;
+    --piccolo: 42 40 54;
+    --popo: 1 5 15;
+    --zeno: 199 208 207;
+    }
 
-  .dark {
-    --goku: #3d41f4;
-    --vegeta: #039cec;
-    --trunks: #c7d0cf;
-    --gohan: #232426;
-    --bulma: #1f1d2b;
-    --broly: #fefefe;
-    --frieza: #718096;
-    --piccolo: #2A2836;
-    --popo: #01050F;
-    --zeno: rgba(199, 208, 207, 0.16)
-  }
+    .dark {
+    --goku: 61 65 244;
+    --vegeta: 3 156 236;
+    --trunks: 199 208 207;
+    --gohan: 35 36 38;
+    --bulma: 31 29 43;
+    --broly: 254 254 254;
+    --frieza: 113 128 150;
+    --piccolo: 42 40 54;
+    --popo: 1 5 15;
+    --zeno: 199 208 207;
+    }
 }

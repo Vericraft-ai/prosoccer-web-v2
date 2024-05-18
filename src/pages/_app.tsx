@@ -9,7 +9,6 @@ type AppPropsExtended = AppProps & {
 };
 
 export default function App({ Component, pageProps, token }: AppPropsExtended) {
-  console.log(token);
   return (
     <Providers token={token}>
       <Component {...pageProps} />

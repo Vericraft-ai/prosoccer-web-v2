@@ -19,16 +19,16 @@ const config = {
     },
     extend: {
       colors: {
-        goku: "var(--goku)",
-        trunks: "var(--trunks)",
-        gohan: "var(--gohan)",
-        vegeta: "var(--vegeta)",
-        bulma: "var(--bulma)",
-        broly: "var(--broly)",
-        frieza: "var(--frieza)",
-        piccolo: "var(--piccolo)",
-        popo: "var(--popo)",
-        zeno: "var(--zeno)",
+        goku: "rgb(var(--goku) / <alpha-value>)",
+        trunks: "rgb(var(--trunks) / <alpha-value>)",
+        gohan: "rgb(var(--gohan) / <alpha-value>)",
+        vegeta: "rgb(var(--vegeta) / <alpha-value>)",
+        bulma: "rgb(var(--bulma) / <alpha-value>)",
+        broly: "rgb(var(--broly) / <alpha-value>)",
+        frieza: "rgb(var(--frieza) / <alpha-value>)",
+        piccolo: "rgb(var(--piccolo) / <alpha-value>)",
+        popo: "rgb(var(--popo) / <alpha-value>)",
+        zeno: "rgb(var(--zeno) / <alpha-value>)",
       },
       keyframes: {
         "accordion-down": {
