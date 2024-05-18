@@ -9,7 +9,7 @@ export const MarketCards = () => {
   }
 
   return (
-    <div className="px-8">
+    <div className="px-8 gap-2 grid grid-cols-auto-fill-335">
       {marketData?.bundles?.map((bundle) => (
         <MarketCard key={bundle.id} bundle={bundle} />
       ))}
