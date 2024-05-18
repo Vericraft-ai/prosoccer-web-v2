@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export const CompetitionsBlock = () => {
   return (
-    <div className="mt-10">
+    <div className="">
       <div className="flex flex-row justify-between w-full">
         <span className="text-broly">Competitions</span>
         <Link href="/" className="text-vegeta">

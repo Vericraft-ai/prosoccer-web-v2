@@ -11,7 +11,7 @@ export const HomePageTabs: React.FC<{ tabs: HomePageTabsProps }> = ({
   tabs
 }) => {
   return (
-    <div className="text-broly">
+    <div className="text-broly mt-12">
       <Tabs defaultValue={tabs[0]?.title} className="w-full">
         <TabsList>
           {tabs?.map((tab, index) => (
