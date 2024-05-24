@@ -6,7 +6,7 @@ import { Wrapper } from "@/features/Layout/components/Wrapper";
 export default function Home() {
   return (
     <Wrapper className="flex flex-row">
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <Header>
           <SearchInput onSearch={(query) => console.log(query)} />
         </Header>

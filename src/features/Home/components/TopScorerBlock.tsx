@@ -20,18 +20,18 @@ export const TopScorerBlock = () => {
         </Link>
       </div>
 
-      <Table className="text-broly bg-vegeta rounded-xl mt-4">
+      <Table className="text-broly mt-4 border border-zeno/50 rounded-2xl border-separate">
         <TableBody className="">
           {topScorersData?.map((player) => (
             <TableRow
               key={player.player_id}
-              className="border-nonemy-3 p-3 flex flex-row w-full justify-between items-center"
+              className="border-none my-3 p-3 flex flex-row w-full justify-between items-center"
             >
-              <TableCell className="font-medium text-center ">
+              <TableCell className="font-medium text-center">
                 {player.player_id}
               </TableCell>
               <TableCell className="font-medium ">
-                {<Gamepad2 size={24} />}
+                {<img src="/GenericJersey.svg" alt="" />}
               </TableCell>
               <TableCell className="font-medium text-left ">
                 <div className="flex flex-col">
@@ -41,7 +41,7 @@ export const TopScorerBlock = () => {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-right ">
+              <TableCell className="text-right">
                 {player.goals_scored}
               </TableCell>
             </TableRow>
