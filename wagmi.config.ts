@@ -2,10 +2,12 @@ import { defineConfig, loadEnv } from "@wagmi/cli";
 import { erc721Abi } from "viem";
 import { etherscan, react } from "@wagmi/cli/plugins";
 import {
+  avalancheFuji,
   mainnet,
   polygon,
   polygonAmoy,
   polygonMumbai,
+  polygonZkEvmCardona,
   sepolia,
 } from "wagmi/chains";
 
@@ -26,11 +28,11 @@ export default defineConfig(() => {
     plugins: [
       etherscan({
         apiKey: process.env.ETHERSCAN_API_KEY || "PLEASE PROVIDE API KEY",
-        chainId: polygonAmoy.id,
+        chainId: avalancheFuji.id,
         contracts: [
           {
-            name: "MetaSoccerToken",
-            address: "0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1",
+            name: "ProsoccerNFT",
+            address: "0xAef261A10E105777EDc79C6A79ca6667c0A6b69A",
           },
         ],
       }),

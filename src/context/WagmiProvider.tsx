@@ -1,6 +1,5 @@
 import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { avalancheFuji, polygonAmoy, polygonZkEvmCardona } from "wagmi/chains";
-import { http } from "wagmi";
+import { polygonAmoy } from "wagmi/chains";
 import { WagmiProvider as OriginalWagmiProvider } from "wagmi";
 import { ProviderType } from "./@types";
 

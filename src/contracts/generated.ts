@@ -6,20 +6,78 @@ import {
 } from 'wagmi/codegen'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// MetaSoccerToken
+// ProsoccerNFT
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const metaSoccerTokenAbi = [
+export const prosoccerNftAbi = [
   {
     type: 'constructor',
     inputs: [
-      { name: 'treasury', internalType: 'address', type: 'address' },
-      { name: 'initialSupply', internalType: 'uint256', type: 'uint256' },
+      { name: 'initialOwner', internalType: 'address', type: 'address' },
     ],
     stateMutability: 'nonpayable',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'sender', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+      { name: 'owner', internalType: 'address', type: 'address' },
+    ],
+    name: 'ERC721IncorrectOwner',
+  },
+  {
+    type: 'error',
+    inputs: [
+      { name: 'operator', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'ERC721InsufficientApproval',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'approver', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidApprover',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'operator', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidOperator',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidOwner',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'receiver', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidReceiver',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'sender', internalType: 'address', type: 'address' }],
+    name: 'ERC721InvalidSender',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'ERC721NonexistentToken',
+  },
+  { type: 'error', inputs: [], name: 'EnforcedPause' },
+  { type: 'error', inputs: [], name: 'ExpectedPause' },
+  {
+    type: 'error',
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
+    name: 'OwnableInvalidOwner',
+  },
+  {
+    type: 'error',
+    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    name: 'OwnableUnauthorizedAccount',
   },
   {
     type: 'event',
@@ -32,19 +90,90 @@ export const metaSoccerTokenAbi = [
         indexed: true,
       },
       {
-        name: 'spender',
+        name: 'approved',
         internalType: 'address',
         type: 'address',
         indexed: true,
       },
       {
-        name: 'value',
+        name: 'tokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: true,
+      },
+    ],
+    name: 'Approval',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'owner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'operator',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      { name: 'approved', internalType: 'bool', type: 'bool', indexed: false },
+    ],
+    name: 'ApprovalForAll',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: '_fromTokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+      {
+        name: '_toTokenId',
         internalType: 'uint256',
         type: 'uint256',
         indexed: false,
       },
     ],
-    name: 'Approval',
+    name: 'BatchMetadataUpdate',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: '_tokenId',
+        internalType: 'uint256',
+        type: 'uint256',
+        indexed: false,
+      },
+    ],
+    name: 'MetadataUpdate',
+  },
+  {
+    type: 'event',
+    anonymous: false,
+    inputs: [
+      {
+        name: 'previousOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+      {
+        name: 'newOwner',
+        internalType: 'address',
+        type: 'address',
+        indexed: true,
+      },
+    ],
+    name: 'OwnershipTransferred',
   },
   {
     type: 'event',
@@ -63,73 +192,13 @@ export const metaSoccerTokenAbi = [
     type: 'event',
     anonymous: false,
     inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32', indexed: true },
-      {
-        name: 'previousAdminRole',
-        internalType: 'bytes32',
-        type: 'bytes32',
-        indexed: true,
-      },
-      {
-        name: 'newAdminRole',
-        internalType: 'bytes32',
-        type: 'bytes32',
-        indexed: true,
-      },
-    ],
-    name: 'RoleAdminChanged',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32', indexed: true },
-      {
-        name: 'account',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-    ],
-    name: 'RoleGranted',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32', indexed: true },
-      {
-        name: 'account',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-      {
-        name: 'sender',
-        internalType: 'address',
-        type: 'address',
-        indexed: true,
-      },
-    ],
-    name: 'RoleRevoked',
-  },
-  {
-    type: 'event',
-    anonymous: false,
-    inputs: [
       { name: 'from', internalType: 'address', type: 'address', indexed: true },
       { name: 'to', internalType: 'address', type: 'address', indexed: true },
       {
-        name: 'value',
+        name: 'tokenId',
         internalType: 'uint256',
         type: 'uint256',
-        indexed: false,
+        indexed: true,
       },
     ],
     name: 'Transfer',
@@ -149,147 +218,56 @@ export const metaSoccerTokenAbi = [
   },
   {
     type: 'function',
-    inputs: [],
-    name: 'DEFAULT_ADMIN_ROLE',
-    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'MINTER_ROLE',
-    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
-    name: 'PAUSER_ROLE',
-    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
     inputs: [
-      { name: 'owner', internalType: 'address', type: 'address' },
-      { name: 'spender', internalType: 'address', type: 'address' },
-    ],
-    name: 'allowance',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
     ],
     name: 'approve',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    outputs: [],
     stateMutability: 'nonpayable',
   },
   {
     type: 'function',
-    inputs: [{ name: 'account', internalType: 'address', type: 'address' }],
+    inputs: [{ name: 'owner', internalType: 'address', type: 'address' }],
     name: 'balanceOf',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     stateMutability: 'view',
   },
   {
     type: 'function',
-    inputs: [{ name: 'amount', internalType: 'uint256', type: 'uint256' }],
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
     name: 'burn',
     outputs: [],
     stateMutability: 'nonpayable',
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'account', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'burnFrom',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
     inputs: [],
-    name: 'decimals',
-    outputs: [{ name: '', internalType: 'uint8', type: 'uint8' }],
+    name: 'contractURI',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
     stateMutability: 'view',
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'subtractedValue', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'decreaseAllowance',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [{ name: 'role', internalType: 'bytes32', type: 'bytes32' }],
-    name: 'getRoleAdmin',
-    outputs: [{ name: '', internalType: 'bytes32', type: 'bytes32' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32' },
-      { name: 'index', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'getRoleMember',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'getApproved',
     outputs: [{ name: '', internalType: 'address', type: 'address' }],
     stateMutability: 'view',
   },
   {
     type: 'function',
-    inputs: [{ name: 'role', internalType: 'bytes32', type: 'bytes32' }],
-    name: 'getRoleMemberCount',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
     inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32' },
-      { name: 'account', internalType: 'address', type: 'address' },
+      { name: 'owner', internalType: 'address', type: 'address' },
+      { name: 'operator', internalType: 'address', type: 'address' },
     ],
-    name: 'grantRole',
-    outputs: [],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32' },
-      { name: 'account', internalType: 'address', type: 'address' },
-    ],
-    name: 'hasRole',
+    name: 'isApprovedForAll',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
     stateMutability: 'view',
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'spender', internalType: 'address', type: 'address' },
-      { name: 'addedValue', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'increaseAllowance',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
-    stateMutability: 'nonpayable',
-  },
-  {
-    type: 'function',
-    inputs: [
-      { name: 'to', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'mint',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'lock',
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -298,6 +276,20 @@ export const metaSoccerTokenAbi = [
     inputs: [],
     name: 'name',
     outputs: [{ name: '', internalType: 'string', type: 'string' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [],
+    name: 'owner',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
+    stateMutability: 'view',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'ownerOf',
+    outputs: [{ name: '', internalType: 'address', type: 'address' }],
     stateMutability: 'view',
   },
   {
@@ -316,21 +308,67 @@ export const metaSoccerTokenAbi = [
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32' },
-      { name: 'account', internalType: 'address', type: 'address' },
-    ],
-    name: 'renounceRole',
+    inputs: [],
+    name: 'renounceOwnership',
     outputs: [],
     stateMutability: 'nonpayable',
   },
   {
     type: 'function',
     inputs: [
-      { name: 'role', internalType: 'bytes32', type: 'bytes32' },
-      { name: 'account', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'uri', internalType: 'string', type: 'string' },
     ],
-    name: 'revokeRole',
+    name: 'safeMint',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
+      { name: 'data', internalType: 'bytes', type: 'bytes' },
+    ],
+    name: 'safeTransferFrom',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: 'operator', internalType: 'address', type: 'address' },
+      { name: 'approved', internalType: 'bool', type: 'bool' },
+    ],
+    name: 'setApprovalForAll',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'baseURI', internalType: 'string', type: 'string' }],
+    name: 'setBaseURI',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [
+      { name: '_contractBaseURI', internalType: 'string', type: 'string' },
+    ],
+    name: 'setContractBaseURI',
     outputs: [],
     stateMutability: 'nonpayable',
   },
@@ -350,30 +388,34 @@ export const metaSoccerTokenAbi = [
   },
   {
     type: 'function',
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'tokenURI',
+    outputs: [{ name: '', internalType: 'string', type: 'string' }],
     stateMutability: 'view',
   },
   {
     type: 'function',
     inputs: [
-      { name: 'recipient', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
+      { name: 'from', internalType: 'address', type: 'address' },
+      { name: 'to', internalType: 'address', type: 'address' },
+      { name: 'tokenId', internalType: 'uint256', type: 'uint256' },
     ],
-    name: 'transfer',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    name: 'transferFrom',
+    outputs: [],
     stateMutability: 'nonpayable',
   },
   {
     type: 'function',
-    inputs: [
-      { name: 'sender', internalType: 'address', type: 'address' },
-      { name: 'recipient', internalType: 'address', type: 'address' },
-      { name: 'amount', internalType: 'uint256', type: 'uint256' },
-    ],
-    name: 'transferFrom',
-    outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+    inputs: [{ name: 'newOwner', internalType: 'address', type: 'address' }],
+    name: 'transferOwnership',
+    outputs: [],
+    stateMutability: 'nonpayable',
+  },
+  {
+    type: 'function',
+    inputs: [{ name: 'tokenId', internalType: 'uint256', type: 'uint256' }],
+    name: 'unlock',
+    outputs: [],
     stateMutability: 'nonpayable',
   },
   {
@@ -386,18 +428,18 @@ export const metaSoccerTokenAbi = [
 ] as const
 
 /**
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const metaSoccerTokenAddress = {
-  137: '0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1',
+export const prosoccerNftAddress = {
+  43113: '0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208',
 } as const
 
 /**
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const metaSoccerTokenConfig = {
-  address: metaSoccerTokenAddress,
-  abi: metaSoccerTokenAbi,
+export const prosoccerNftConfig = {
+  address: prosoccerNftAddress,
+  abi: prosoccerNftAbi,
 } as const
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -569,623 +611,600 @@ export const erc721Abi = [
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerToken = /*#__PURE__*/ createUseReadContract({
-  abi: metaSoccerTokenAbi,
-  address: metaSoccerTokenAddress,
+export const useReadProsoccerNft = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
 })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"DEFAULT_ADMIN_ROLE"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"balanceOf"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenDefaultAdminRole =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'DEFAULT_ADMIN_ROLE',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"MINTER_ROLE"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenMinterRole =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'MINTER_ROLE',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"PAUSER_ROLE"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenPauserRole =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'PAUSER_ROLE',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"allowance"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenAllowance =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'allowance',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"balanceOf"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenBalanceOf =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+export const useReadProsoccerNftBalanceOf = /*#__PURE__*/ createUseReadContract(
+  {
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'balanceOf',
-  })
+  },
+)
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"decimals"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"contractURI"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenDecimals =
+export const useReadProsoccerNftContractUri =
   /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'decimals',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'contractURI',
   })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"getRoleAdmin"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"getApproved"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenGetRoleAdmin =
+export const useReadProsoccerNftGetApproved =
   /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'getRoleAdmin',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'getApproved',
   })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"getRoleMember"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"isApprovedForAll"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenGetRoleMember =
+export const useReadProsoccerNftIsApprovedForAll =
   /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'getRoleMember',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'isApprovedForAll',
   })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"getRoleMemberCount"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"name"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenGetRoleMemberCount =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'getRoleMemberCount',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"hasRole"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenHasRole =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'hasRole',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"name"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenName = /*#__PURE__*/ createUseReadContract({
-  abi: metaSoccerTokenAbi,
-  address: metaSoccerTokenAddress,
+export const useReadProsoccerNftName = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
   functionName: 'name',
 })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"paused"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"owner"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenPaused = /*#__PURE__*/ createUseReadContract(
-  {
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'paused',
-  },
-)
+export const useReadProsoccerNftOwner = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'owner',
+})
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"supportsInterface"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"ownerOf"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenSupportsInterface =
+export const useReadProsoccerNftOwnerOf = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'ownerOf',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"paused"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useReadProsoccerNftPaused = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'paused',
+})
+
+/**
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"supportsInterface"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useReadProsoccerNftSupportsInterface =
   /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'supportsInterface',
   })
 
 /**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"symbol"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"symbol"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useReadMetaSoccerTokenSymbol = /*#__PURE__*/ createUseReadContract(
-  {
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'symbol',
-  },
-)
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"totalSupply"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useReadMetaSoccerTokenTotalSupply =
-  /*#__PURE__*/ createUseReadContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'totalSupply',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWriteMetaSoccerToken = /*#__PURE__*/ createUseWriteContract({
-  abi: metaSoccerTokenAbi,
-  address: metaSoccerTokenAddress,
+export const useReadProsoccerNftSymbol = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'symbol',
 })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"approve"`
+ * Wraps __{@link useReadContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"tokenURI"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenApprove =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'approve',
-  })
+export const useReadProsoccerNftTokenUri = /*#__PURE__*/ createUseReadContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'tokenURI',
+})
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"burn"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenBurn = /*#__PURE__*/ createUseWriteContract(
+export const useWriteProsoccerNft = /*#__PURE__*/ createUseWriteContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"approve"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftApprove = /*#__PURE__*/ createUseWriteContract(
   {
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'burn',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'approve',
   },
 )
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"burnFrom"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"burn"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenBurnFrom =
+export const useWriteProsoccerNftBurn = /*#__PURE__*/ createUseWriteContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'burn',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"lock"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftLock = /*#__PURE__*/ createUseWriteContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'lock',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"pause"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftPause = /*#__PURE__*/ createUseWriteContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'pause',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"renounceOwnership"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftRenounceOwnership =
   /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'burnFrom',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'renounceOwnership',
   })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"decreaseAllowance"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"safeMint"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenDecreaseAllowance =
+export const useWriteProsoccerNftSafeMint =
   /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'decreaseAllowance',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'safeMint',
   })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"grantRole"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"safeTransferFrom"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenGrantRole =
+export const useWriteProsoccerNftSafeTransferFrom =
   /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'grantRole',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'safeTransferFrom',
   })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"increaseAllowance"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setApprovalForAll"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenIncreaseAllowance =
+export const useWriteProsoccerNftSetApprovalForAll =
   /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'increaseAllowance',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setApprovalForAll',
   })
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"mint"`
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setBaseURI"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenMint = /*#__PURE__*/ createUseWriteContract(
+export const useWriteProsoccerNftSetBaseUri =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setBaseURI',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setContractBaseURI"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftSetContractBaseUri =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setContractBaseURI',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftTransferFrom =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'transferFrom',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"transferOwnership"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftTransferOwnership =
+  /*#__PURE__*/ createUseWriteContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"unlock"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftUnlock = /*#__PURE__*/ createUseWriteContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+  functionName: 'unlock',
+})
+
+/**
+ * Wraps __{@link useWriteContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"unpause"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWriteProsoccerNftUnpause = /*#__PURE__*/ createUseWriteContract(
   {
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'mint',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'unpause',
   },
 )
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"pause"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenPause =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'pause',
-  })
+export const useSimulateProsoccerNft = /*#__PURE__*/ createUseSimulateContract({
+  abi: prosoccerNftAbi,
+  address: prosoccerNftAddress,
+})
 
 /**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"renounceRole"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"approve"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWriteMetaSoccerTokenRenounceRole =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'renounceRole',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"revokeRole"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWriteMetaSoccerTokenRevokeRole =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'revokeRole',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"transfer"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWriteMetaSoccerTokenTransfer =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'transfer',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"transferFrom"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWriteMetaSoccerTokenTransferFrom =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'transferFrom',
-  })
-
-/**
- * Wraps __{@link useWriteContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"unpause"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWriteMetaSoccerTokenUnpause =
-  /*#__PURE__*/ createUseWriteContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'unpause',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerToken =
+export const useSimulateProsoccerNftApprove =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"approve"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerTokenApprove =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'approve',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"burn"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"burn"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenBurn =
+export const useSimulateProsoccerNftBurn =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'burn',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"burnFrom"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"lock"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenBurnFrom =
+export const useSimulateProsoccerNftLock =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'burnFrom',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'lock',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"decreaseAllowance"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"pause"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenDecreaseAllowance =
+export const useSimulateProsoccerNftPause =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'decreaseAllowance',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"grantRole"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerTokenGrantRole =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'grantRole',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"increaseAllowance"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerTokenIncreaseAllowance =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'increaseAllowance',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"mint"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerTokenMint =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'mint',
-  })
-
-/**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"pause"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useSimulateMetaSoccerTokenPause =
-  /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'pause',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"renounceRole"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"renounceOwnership"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenRenounceRole =
+export const useSimulateProsoccerNftRenounceOwnership =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'renounceRole',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'renounceOwnership',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"revokeRole"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"safeMint"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenRevokeRole =
+export const useSimulateProsoccerNftSafeMint =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'revokeRole',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'safeMint',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"transfer"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"safeTransferFrom"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenTransfer =
+export const useSimulateProsoccerNftSafeTransferFrom =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    functionName: 'transfer',
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'safeTransferFrom',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"transferFrom"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setApprovalForAll"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenTransferFrom =
+export const useSimulateProsoccerNftSetApprovalForAll =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setApprovalForAll',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setBaseURI"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useSimulateProsoccerNftSetBaseUri =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setBaseURI',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"setContractBaseURI"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useSimulateProsoccerNftSetContractBaseUri =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'setContractBaseURI',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"transferFrom"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useSimulateProsoccerNftTransferFrom =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'transferFrom',
   })
 
 /**
- * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `functionName` set to `"unpause"`
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"transferOwnership"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useSimulateMetaSoccerTokenUnpause =
+export const useSimulateProsoccerNftTransferOwnership =
   /*#__PURE__*/ createUseSimulateContract({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'transferOwnership',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"unlock"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useSimulateProsoccerNftUnlock =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    functionName: 'unlock',
+  })
+
+/**
+ * Wraps __{@link useSimulateContract}__ with `abi` set to __{@link prosoccerNftAbi}__ and `functionName` set to `"unpause"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useSimulateProsoccerNftUnpause =
+  /*#__PURE__*/ createUseSimulateContract({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     functionName: 'unpause',
   })
 
 /**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWatchMetaSoccerTokenEvent =
+export const useWatchProsoccerNftEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
   })
 
 /**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"Approval"`
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"Approval"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWatchMetaSoccerTokenApprovalEvent =
+export const useWatchProsoccerNftApprovalEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     eventName: 'Approval',
   })
 
 /**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"Paused"`
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"ApprovalForAll"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWatchMetaSoccerTokenPausedEvent =
+export const useWatchProsoccerNftApprovalForAllEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    eventName: 'ApprovalForAll',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"BatchMetadataUpdate"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWatchProsoccerNftBatchMetadataUpdateEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    eventName: 'BatchMetadataUpdate',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"MetadataUpdate"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWatchProsoccerNftMetadataUpdateEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    eventName: 'MetadataUpdate',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"OwnershipTransferred"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWatchProsoccerNftOwnershipTransferredEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
+    eventName: 'OwnershipTransferred',
+  })
+
+/**
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"Paused"`
+ *
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
+ */
+export const useWatchProsoccerNftPausedEvent =
+  /*#__PURE__*/ createUseWatchContractEvent({
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     eventName: 'Paused',
   })
 
 /**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"RoleAdminChanged"`
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"Transfer"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWatchMetaSoccerTokenRoleAdminChangedEvent =
+export const useWatchProsoccerNftTransferEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    eventName: 'RoleAdminChanged',
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"RoleGranted"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWatchMetaSoccerTokenRoleGrantedEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    eventName: 'RoleGranted',
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"RoleRevoked"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWatchMetaSoccerTokenRoleRevokedEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
-    eventName: 'RoleRevoked',
-  })
-
-/**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"Transfer"`
- *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
- */
-export const useWatchMetaSoccerTokenTransferEvent =
-  /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     eventName: 'Transfer',
   })
 
 /**
- * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link metaSoccerTokenAbi}__ and `eventName` set to `"Unpaused"`
+ * Wraps __{@link useWatchContractEvent}__ with `abi` set to __{@link prosoccerNftAbi}__ and `eventName` set to `"Unpaused"`
  *
- * [__View Contract on Polygon Polygon Scan__](https://polygonscan.com/address/0xe8377A076adAbb3F9838afB77Bee96Eac101ffB1)
+ * [__View Contract on Avalanche Fuji Snow Scan__](https://testnet.snowscan.xyz/address/0x7AEa55313E57A0A606f713BE3D52fFd0Ac61D208)
  */
-export const useWatchMetaSoccerTokenUnpausedEvent =
+export const useWatchProsoccerNftUnpausedEvent =
   /*#__PURE__*/ createUseWatchContractEvent({
-    abi: metaSoccerTokenAbi,
-    address: metaSoccerTokenAddress,
+    abi: prosoccerNftAbi,
+    address: prosoccerNftAddress,
     eventName: 'Unpaused',
   })
 
