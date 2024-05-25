@@ -6,7 +6,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const authenticationAdapter = createAuthenticationAdapter({
   getNonce: async () => {
-    const response = await fetch(`${BASE_URL}api/auth/generate-nonce`, {
+    const response = await fetch(`${BASE_URL}/api/auth/generate-nonce`, {
       credentials: "include",
     });
     return await response.text();
@@ -26,7 +26,7 @@ export const authenticationAdapter = createAuthenticationAdapter({
     return message.prepareMessage();
   },
   verify: async ({ message, signature }) => {
-    const verifyRes = await fetch(`${BASE_URL}api/auth/verify`, {
+    const verifyRes = await fetch(`${BASE_URL}/api/auth/verify`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message, signature }),
@@ -38,7 +38,7 @@ export const authenticationAdapter = createAuthenticationAdapter({
     return verifyRes.ok;
   },
   signOut: async () => {
-    const logoutRes = await fetch(`${BASE_URL}api/auth/logout`);
+    const logoutRes = await fetch(`${BASE_URL}/api/auth/logout`);
 
     if (logoutRes.ok) {
       Router.reload();
