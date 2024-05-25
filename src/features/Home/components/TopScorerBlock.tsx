@@ -9,6 +9,7 @@ import {
   TableRow
 } from "@/blocks/components/Table";
 import topScorersData from "@/mocks/TopScorerData.json";
+import { Badge } from "@/blocks/components/Badge";
 
 export const TopScorerBlock = () => {
   return (
@@ -25,7 +26,7 @@ export const TopScorerBlock = () => {
           {topScorersData?.map((player) => (
             <TableRow
               key={player.player_id}
-              className="border-none my-3 p-3 flex flex-row w-full justify-between items-center"
+              className="border-none my-3 p-3 block w-full justify-between items-center"
             >
               <TableCell className="font-medium text-center">
                 {player.player_id}
@@ -41,8 +42,10 @@ export const TopScorerBlock = () => {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-right">
-                {player.goals_scored}
+              <TableCell>
+                <Badge className="bg-vegeta p-3 h-[30px] w-[40px]">
+                  {player.goals_scored}
+                </Badge>
               </TableCell>
             </TableRow>
           ))}
