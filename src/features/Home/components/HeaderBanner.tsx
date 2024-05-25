@@ -3,22 +3,22 @@ import Link from "next/link";
 import { Button } from "@/blocks/components/Button";
 import { HeaderBannerProps } from "../../Layout/@types";
 import { HomePageTabs } from "./HomePageTabs";
-import { Gamepad2, Trophy } from "lucide-react";
 import { MatchTable } from "./MatchTable";
 import { CompetitionsBlock } from "./CompetitionsBlock";
 import { TopScorerBlock } from "./TopScorerBlock";
+import { StandingsTable } from "./StandingsTable";
 
 export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
   const tabList = [
     {
       title: "Matches",
-      icon: <Gamepad2 size={33} />,
+      icon: <img src="./ballicon.svg" alt="ballicon" width={20} height={20} />,
       children: <MatchTable />
     },
     {
       title: "Standings",
-      icon: <Trophy size={30} />,
-      children: <MatchTable />
+      icon: <img src="/trophy.svg" alt="trophyicon" width={20} height={20} />,
+      children: <StandingsTable />
     }
   ];
 

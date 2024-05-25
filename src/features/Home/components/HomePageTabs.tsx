@@ -18,10 +18,10 @@ export const HomePageTabs: React.FC<{ tabs: HomePageTabsProps }> = ({
             <TabsTrigger
               value={tab.title!}
               key={index}
-              className=" rounded-none data-[state=active]:border-b-2 border-vegeta"
+              className="rounded-none data-[state=active]:border-b-2 border-vegeta"
             >
               <div className="text-trunks text-2xl flex flex-row">
-                <span className="pr-5"> {tab.title}</span> {tab.icon}
+                <span className="pr-2"> {tab.title}</span> {tab.icon}
               </div>
             </TabsTrigger>
           ))}

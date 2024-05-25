@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "team_name": "Chelsea FC",
+    "points": 77,
+    "position": 3
+  },
+  {
+    "id": 2,
+    "team_name": "Manchester United",
+    "points": 83,
+    "position": 9
+  },
+  {
+    "id": 3,
+    "team_name": "Manchester City",
+    "points": 85,
+    "position": 13
+  },
+  {
+    "id": 4,
+    "team_name": "Arsenal FC",
+    "points": 30,
+    "position": 12
+  },
+  {
+    "id": 5,
+    "team_name": "Liverpool FC",
+    "points": 53,
+    "position": 9
+  }
+]
