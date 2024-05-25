@@ -14,7 +14,7 @@ export const MatchTable = () => {
         {matchResultMock?.map((match) => (
           <TableRow
             key={match.matchId}
-            className="border-none odd:rounded-xl odd:bg-piccolo flex flex-row w-full my-3 p-3 justify-between"
+            className="border-none odd:rounded-xl odd:bg-piccolo flex flex-row w-full my-3 p-3 justify-between items-center"
           >
             <TableCell className="font-medium text-center ">
               {match.homeTeam}
