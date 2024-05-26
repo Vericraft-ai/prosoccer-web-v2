@@ -1,6 +1,4 @@
 import React from "react";
-import { CardOne } from "./CardOne";
-import { Gamepad2, MoveRight } from "lucide-react";
 import Link from "next/link";
 import {
   Table,
@@ -10,6 +8,7 @@ import {
 } from "@/blocks/components/Table";
 import topScorersData from "@/mocks/TopScorerData.json";
 import { Badge } from "@/blocks/components/Badge";
+import Image from "next/image";
 
 export const TopScorerBlock = () => {
   return (
@@ -32,7 +31,14 @@ export const TopScorerBlock = () => {
                 {player.player_id}
               </TableCell>
               <TableCell className="font-medium ">
-                {<img src="/GenericJersey.svg" alt="" />}
+                {
+                  <Image
+                    src="/GenericJersey.svg"
+                    alt="jersey"
+                    width={30}
+                    height={30}
+                  />
+                }
               </TableCell>
               <TableCell className="font-medium text-left ">
                 <div className="flex flex-col">

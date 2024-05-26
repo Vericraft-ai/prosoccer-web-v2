@@ -7,17 +7,20 @@ import { MatchTable } from "./MatchTable";
 import { CompetitionsBlock } from "./CompetitionsBlock";
 import { TopScorerBlock } from "./TopScorerBlock";
 import { StandingsTable } from "./StandingsTable";
+import Image from "next/image";
 
 export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
   const tabList = [
     {
       title: "Matches",
-      icon: <img src="./ballicon.svg" alt="ballicon" width={20} height={20} />,
+      icon: (
+        <Image src="./ballicon.svg" alt="ballicon" width={20} height={20} />
+      ),
       children: <MatchTable />
     },
     {
       title: "Standings",
-      icon: <img src="/trophy.svg" alt="trophyicon" width={20} height={20} />,
+      icon: <Image src="/trophy.svg" alt="trophyicon" width={20} height={20} />,
       children: <StandingsTable />
     }
   ];
@@ -42,12 +45,16 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
               </Button>
             </div>
             <div className="relative w-full">
-              <img
+              <Image
+                width={300}
+                height={300}
                 src="/banner1.svg"
                 alt="banner-background"
                 className="w-full"
               />
-              <img
+              <Image
+                width={300}
+                height={300}
                 src="/banner2.svg"
                 alt="banner-hero"
                 className="absolute top-0 left-0 bottom-0 w-full h-full mt-3 pt-4"
@@ -60,7 +67,9 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
         <section className="flex flex-row w-full mt-12 space-x-6">
           <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
             <Link href="/squad">
-              <img
+              <Image
+                width={1093}
+                height={217}
                 src="/banner4.svg"
                 alt="banner-background"
                 className="min-w-[300px] min-h-[300px] object-cover"

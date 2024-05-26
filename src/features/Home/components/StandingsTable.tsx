@@ -8,6 +8,7 @@ import {
   TableRow
 } from "@/blocks/components/Table";
 import standingsResultMock from "@/mocks/StandingsData.json";
+import Image from "next/image";
 
 export const StandingsTable = () => {
   return (
@@ -29,7 +30,15 @@ export const StandingsTable = () => {
               {standing.id + "."}
             </TableCell>
             <TableCell width={50} className="font-medium text-center">
-              {<img src={"/TeamLogo.svg"} alt="logo" className="w-8 h-8" />}
+              {
+                <Image
+                  src={"/TeamLogo.svg"}
+                  alt="logo"
+                  className="w-8 h-8"
+                  width={50}
+                  height={50}
+                />
+              }
             </TableCell>
             <TableCell className="font-medium text-center">
               {standing.team_name}

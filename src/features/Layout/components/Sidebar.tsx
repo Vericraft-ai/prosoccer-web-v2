@@ -4,49 +4,55 @@ import {
   PersonIcon,
   BarChartIcon,
   TransformIcon,
-  DashboardIcon,
+  DashboardIcon
 } from "@radix-ui/react-icons";
 import { CircleArrowLeft } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Sidebar = () => {
   const sidebarMenu: SidebarMenuTypes = [
     {
       title: "Home",
       icon: <HomeIcon />,
-      href: "/",
+      href: "/"
     },
     {
       title: "Squad",
       icon: <PersonIcon />,
-      href: "/squad",
+      href: "/squad"
     },
     {
       title: "Market",
       icon: <BarChartIcon />,
-      href: "/market/bundle",
+      href: "/market/bundle"
     },
     {
       title: "Training",
       icon: <TransformIcon />,
-      href: "/training",
+      href: "/training"
     },
     {
       title: "Club",
       icon: <DashboardIcon />,
-      href: "/club",
+      href: "/club"
     },
     {
       title: "Logout",
       icon: <CircleArrowLeft height={15} width={15} />,
-      href: "/logout",
-    },
+      href: "/logout"
+    }
   ];
 
   return (
     <div className="relative w-[300px] min-w-[300px] border-r border-[#2A2836] min-h-screen py-4 pl-4">
       <div className="my-4 flex flex-col items-center justify-center space-y-8">
-        <img src="/ProSoccer.svg" alt="prosoccer-web" />
+        <Image
+          src="/ProSoccer.svg"
+          alt="prosoccer-web"
+          width={200}
+          height={200}
+        />
         <hr className="border-2 bg-white w-[190px]" />
       </div>
       <div className="nav-items">
