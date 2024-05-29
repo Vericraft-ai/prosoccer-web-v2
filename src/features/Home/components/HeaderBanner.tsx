@@ -30,7 +30,7 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
       {/* league banner section */}
       <div className="flex flex-col w-full mr-10">
         <section className="flex flex-row w-full space-x-6">
-          <div className="w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
+          <div className="w-full flex flex-row bg-piccolo  rounded-xl text-broly min-h-full min-w-full">
             <div className="w-full p-4 grid grid-cols content-center ">
               {/* this div will accept the banner title */}
               <h4 className="text-broly text-2xl">Play a Match</h4>
@@ -65,7 +65,7 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
 
         {/* squad banner section */}
         <section className="flex flex-row w-full mt-12 space-x-6">
-          <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
+          <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-full min-w-full">
             <Link href="/squad">
               <Image
                 priority
@@ -73,7 +73,7 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
                 height={217}
                 src="/banner4.svg"
                 alt="banner-background"
-                className="min-w-[300px] min-h-[300px] object-cover"
+                className="object-cover"
               />
             </Link>
           </div>
