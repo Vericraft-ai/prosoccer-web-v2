@@ -14,7 +14,7 @@ export const StandingsTable = () => {
   return (
     <Table className="text-broly">
       <TableHeader>
-        <TableRow className="!border-0">
+        <TableRow className="!border-0 flex flex-row w-full justify-between">
           <TableHead>Club</TableHead>
           <TableHead>Points</TableHead>
         </TableRow>

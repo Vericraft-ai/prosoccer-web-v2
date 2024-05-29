@@ -10,7 +10,7 @@ import matchResultMock from "@/mocks/MatchData.json";
 export const MatchTable = () => {
   return (
     <Table className="text-broly">
-      <TableBody className="">
+      <TableBody>
         {matchResultMock?.map((match) => (
           <TableRow
             key={match.matchId}
