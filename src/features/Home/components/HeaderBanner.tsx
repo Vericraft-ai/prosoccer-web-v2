@@ -68,6 +68,7 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
           <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
             <Link href="/squad">
               <Image
+                priority
                 width={1093}
                 height={217}
                 src="/banner4.svg"
