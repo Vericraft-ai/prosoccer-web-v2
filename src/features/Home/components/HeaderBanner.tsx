@@ -3,22 +3,25 @@ import Link from "next/link";
 import { Button } from "@/blocks/components/Button";
 import { HeaderBannerProps } from "../../Layout/@types";
 import { HomePageTabs } from "./HomePageTabs";
-import { Gamepad2, Trophy } from "lucide-react";
 import { MatchTable } from "./MatchTable";
 import { CompetitionsBlock } from "./CompetitionsBlock";
 import { TopScorerBlock } from "./TopScorerBlock";
+import { StandingsTable } from "./StandingsTable";
+import Image from "next/image";
 
 export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
   const tabList = [
     {
       title: "Matches",
-      icon: <Gamepad2 size={33} />,
+      icon: (
+        <Image src="./ballicon.svg" alt="ballicon" width={20} height={20} />
+      ),
       children: <MatchTable />
     },
     {
       title: "Standings",
-      icon: <Trophy size={30} />,
-      children: <MatchTable />
+      icon: <Image src="/trophy.svg" alt="trophyicon" width={20} height={20} />,
+      children: <StandingsTable />
     }
   ];
 
@@ -27,7 +30,7 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
       {/* league banner section */}
       <div className="flex flex-col w-full mr-10">
         <section className="flex flex-row w-full space-x-6">
-          <div className="w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
+          <div className="w-full flex flex-row bg-piccolo  rounded-xl text-broly min-h-full min-w-full">
             <div className="w-full p-4 grid grid-cols content-center ">
               {/* this div will accept the banner title */}
               <h4 className="text-broly text-2xl">Play a Match</h4>
@@ -42,12 +45,16 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
               </Button>
             </div>
             <div className="relative w-full">
-              <img
+              <Image
+                width={300}
+                height={300}
                 src="/banner1.svg"
                 alt="banner-background"
                 className="w-full"
               />
-              <img
+              <Image
+                width={300}
+                height={300}
                 src="/banner2.svg"
                 alt="banner-hero"
                 className="absolute top-0 left-0 bottom-0 w-full h-full mt-3 pt-4"
@@ -58,12 +65,15 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
 
         {/* squad banner section */}
         <section className="flex flex-row w-full mt-12 space-x-6">
-          <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-[300px] min-w-[300px]">
+          <div className=" w-full flex flex-row bg-piccolo rounded-xl text-broly min-h-full min-w-full">
             <Link href="/squad">
-              <img
+              <Image
+                priority
+                width={1093}
+                height={217}
                 src="/banner4.svg"
                 alt="banner-background"
-                className="min-w-[300px] min-h-[300px] object-cover"
+                className="object-cover"
               />
             </Link>
           </div>

@@ -29,6 +29,7 @@ const config = {
         piccolo: "rgb(var(--piccolo) / <alpha-value>)",
         popo: "rgb(var(--popo) / <alpha-value>)",
         zeno: "rgb(var(--zeno) / <alpha-value>)",
+        heles: "rgb(var(--heles) / <alpha-value>)",
       },
       keyframes: {
         "accordion-down": {
@@ -48,7 +49,7 @@ const config = {
         "auto-fill-335": "repeat(auto-fill, minmax(335px, 1fr))",
         "auto-fit-100": "repeat(auto-fit, minmax(200px, 1fr))",
       },
-   
+
     },
   },
   plugins: [require("tailwindcss-animate")],

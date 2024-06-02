@@ -1,6 +1,4 @@
 import React from "react";
-import { CardOne } from "./CardOne";
-import { Gamepad2, MoveRight } from "lucide-react";
 import Link from "next/link";
 import {
   Table,
@@ -9,6 +7,8 @@ import {
   TableRow
 } from "@/blocks/components/Table";
 import topScorersData from "@/mocks/TopScorerData.json";
+import { Badge } from "@/blocks/components/Badge";
+import Image from "next/image";
 
 export const TopScorerBlock = () => {
   return (
@@ -25,13 +25,20 @@ export const TopScorerBlock = () => {
           {topScorersData?.map((player) => (
             <TableRow
               key={player.player_id}
-              className="border-none my-3 p-3 flex flex-row w-full justify-between items-center"
+              className="border-none my-3 p-3 block w-full justify-between items-center"
             >
               <TableCell className="font-medium text-center">
                 {player.player_id}
               </TableCell>
               <TableCell className="font-medium ">
-                {<img src="/GenericJersey.svg" alt="" />}
+                {
+                  <Image
+                    src="/GenericJersey.svg"
+                    alt="jersey"
+                    width={30}
+                    height={30}
+                  />
+                }
               </TableCell>
               <TableCell className="font-medium text-left ">
                 <div className="flex flex-col">
@@ -41,8 +48,10 @@ export const TopScorerBlock = () => {
                   </span>
                 </div>
               </TableCell>
-              <TableCell className="text-right">
-                {player.goals_scored}
+              <TableCell>
+                <Badge className="bg-vegeta p-3 h-[30px] w-[40px]">
+                  {player.goals_scored}
+                </Badge>
               </TableCell>
             </TableRow>
           ))}
