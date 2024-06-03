@@ -1,72 +1,80 @@
 import { SidebarMenuTypes } from "../@types";
-import {
-  HomeIcon,
-  PersonIcon,
-  BarChartIcon,
-  TransformIcon,
-  DashboardIcon
-} from "@radix-ui/react-icons";
-import { CircleArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { PeopleIcon } from "@/blocks/icons/PeopleIcon";
+import { ActivityIcon } from "@/blocks/icons/ActivityIcon";
+import { BezierIcon } from "@/blocks/icons/BezierIcon";
+import { ShieldIcon } from "@/blocks/icons/ShieldIcon";
+import { CircleArrowLeft } from "@/blocks/icons/CircleArrowLeft";
+import { HomeIcon } from "@/blocks/icons/HomeIcon";
+import { useRouter } from "next/router";
+import { cn } from "@/blocks/utils/cn";
 
 export const Sidebar = () => {
   const sidebarMenu: SidebarMenuTypes = [
     {
       title: "Home",
-      icon: <HomeIcon />,
-      href: "/"
+      Icon: HomeIcon,
+      href: "/",
     },
     {
       title: "Squad",
-      icon: <PersonIcon />,
-      href: "/squad"
+      Icon: PeopleIcon,
+      href: "/squad",
     },
     {
       title: "Market",
-      icon: <BarChartIcon />,
-      href: "/market/bundle"
+      Icon: ActivityIcon,
+      href: "/market/bundle",
     },
     {
       title: "Training",
-      icon: <TransformIcon />,
-      href: "/training"
+      Icon: BezierIcon,
+      href: "/training",
     },
     {
       title: "Club",
-      icon: <DashboardIcon />,
-      href: "/club"
+      Icon: ShieldIcon,
+      href: "/club",
     },
     {
       title: "Logout",
-      icon: <CircleArrowLeft height={15} width={15} />,
-      href: "/logout"
-    }
+      Icon: CircleArrowLeft,
+      href: "/logout",
+    },
   ];
 
+  const router = useRouter();
+  const pathname = router.pathname;
+
   return (
-    <div className="relative w-[300px] min-w-[300px] border-r border-[#2A2836] min-h-screen py-4 pl-4">
-      <div className="my-4 flex flex-col items-center justify-center space-y-8">
+    <div className="fixed z-10 w-[268px] border-r border-piccolo min-h-screen">
+      <div className="flex flex-col items-center justify-center gap-5 border-b-2 pb-5 mx-8 my-[2.875rem]">
         <Image
           src="/ProSoccer.svg"
           alt="prosoccer-web"
-          width={200}
-          height={200}
+          width={182}
+          height={34}
         />
-        <hr className="border-2 bg-white w-[190px]" />
       </div>
       <div className="nav-items">
-        <ul>
-          {sidebarMenu?.map((item, key) => (
-            <li
+        <div className="flex flex-col gap-3">
+          {sidebarMenu?.map(({ Icon, href, title }, key) => (
+            <Link
               key={key}
-              className="text-white text-lg flex items-center py-4 pl-4 gap-x-3 gap-y-3  cursor-pointer transition-colors hover:border-l-4 last:absolute last:bottom-4 min-w-[283px]"
+              href={href}
+              className={cn(
+                "relative flex items-center py-3.5 pl-4 gap-3 hover:bg-goku/15 before:absolute before:inset-y-0 before:w-[3px] before:left-0 hover:before:bg-vegeta transition-colors last:absolute last:bottom-8 last:inset-x-0",
+                pathname === href && "bg-goku/15 before:bg-vegeta"
+              )}
             >
-              {item.icon}
-              <Link href={item.href}>{item.title}</Link>
-            </li>
+              <Icon />
+              <span className={cn(pathname === href ? "font-semibold" : "")}>
+                {title}
+              </span>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

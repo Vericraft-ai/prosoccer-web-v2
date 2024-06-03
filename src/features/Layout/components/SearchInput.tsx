@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SearchInputProps } from "../@types";
 import { Input } from "@/blocks/components/Input";
+import { SearchIcon } from "@/blocks/icons/SearchIcon";
 
 export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   const [query, setQuery] = useState<string>("");
@@ -13,12 +14,15 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   }, [query, onSearch]);
 
   return (
-    <Input
-      type="search"
-      placeholder="🔍  Search match"
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      className="bg-piccolo px-3 py-5 text-sm text-broly pl-4 border-0 rounded-xl w-4/6"
-    />
+    <div className="relative w-full">
+      <Input
+        type="search"
+        placeholder="Search match"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="bg-piccolo px-3 text-base text-broly border-0 rounded-xl w-4/6 pl-14 h-12"
+      />
+      <SearchIcon className="absolute text-broly left-5 top-2/4 -translate-y-2/4" />
+    </div>
   );
 };

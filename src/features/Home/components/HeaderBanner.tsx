@@ -16,17 +16,17 @@ export const HeaderBanner = ({ title, content, image }: HeaderBannerProps) => {
       icon: (
         <Image src="./ballicon.svg" alt="ballicon" width={20} height={20} />
       ),
-      children: <MatchTable />
+      children: <MatchTable />,
     },
     {
       title: "Standings",
       icon: <Image src="/trophy.svg" alt="trophyicon" width={20} height={20} />,
-      children: <StandingsTable />
-    }
+      children: <StandingsTable />,
+    },
   ];
 
   return (
-    <div className="banner-wrapper flex flex-row  justify-between  px-8">
+    <div className="banner-wrapper flex flex-row mt-9 justify-between">
       {/* league banner section */}
       <div className="flex flex-col w-full mr-10">
         <section className="flex flex-row w-full space-x-6">

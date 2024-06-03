@@ -2,13 +2,13 @@ import React from "react";
 
 export type SidebarMenuTypes = {
   title: string;
-  icon: React.ReactNode;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   href: string;
 }[];
 
 export type SearchInputProps = {
   onSearch: (query: string) => void;
-}
+};
 
 export type HeaderBannerProps = {
   title?: string;
@@ -21,7 +21,6 @@ export type HomePageTabsProps = {
   title?: string;
   icon?: React.ReactNode;
 }[];
-
 
 export type CardProps = {
   logo?: React.ReactNode;
