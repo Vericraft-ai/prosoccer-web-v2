@@ -5,7 +5,7 @@ import { Wrapper } from "@/features/Layout/components/Wrapper";
 
 export default function Home() {
   return (
-    <Wrapper className="flex flex-row">
+    <Wrapper>
       <div className="flex flex-col w-full">
         <Header>
           <SearchInput onSearch={(query) => console.log(query)} />
