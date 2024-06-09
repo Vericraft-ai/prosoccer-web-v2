@@ -3,35 +3,30 @@ import {
   Tabs,
   TabsContent,
   TabsList,
-  TabsTrigger
+  TabsTrigger,
 } from "@/blocks/components/Tabs";
-import { HomePageTabsProps } from "../../Layout/@types";
+import { MatchesTable } from "./MatchesTable";
+import { StandingsTable } from "./StandingsTable";
 
-export const HomePageTabs: React.FC<{ tabs: HomePageTabsProps }> = ({
-  tabs
-}) => {
+export const HomePageTabs = () => {
   return (
-    <div className="text-broly mt-12">
-      <Tabs defaultValue={tabs[0]?.title} className="w-full">
+    <div className="text-broly mt-6 lg:mt-12">
+      <Tabs defaultValue="matches" className="w-full">
         <TabsList>
-          {tabs?.map((tab, index) => (
-            <TabsTrigger
-              value={tab.title!}
-              key={index}
-              className="rounded-none data-[state=active]:border-b-2 border-vegeta"
-            >
-              <div className="text-trunks text-2xl flex flex-row">
-                <span className="pr-2"> {tab.title}</span> {tab.icon}
-              </div>
-            </TabsTrigger>
-          ))}
+          <TabsTrigger value="matches" className="">
+            Matches ⚽️
+          </TabsTrigger>
+          <TabsTrigger value="standings" className="">
+            Standings 🏆
+          </TabsTrigger>
         </TabsList>
 
-        {tabs?.map((tab, index) => (
-          <TabsContent value={tab.title!} key={index}>
-            <div>{tab.children}</div>
-          </TabsContent>
-        ))}
+        <TabsContent value="matches">
+          <MatchesTable />
+        </TabsContent>
+        <TabsContent value="standings">
+          <StandingsTable />
+        </TabsContent>
       </Tabs>
     </div>
   );

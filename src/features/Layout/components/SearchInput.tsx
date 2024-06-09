@@ -14,13 +14,13 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   }, [query, onSearch]);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full lg:w-2/4">
       <Input
         type="search"
         placeholder="Search match"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="bg-piccolo px-3 text-base text-broly border-0 rounded-xl w-4/6 pl-14 h-12"
+        className="bg-piccolo px-3 text-sm md:text-base text-broly border-0 rounded-xl w-full pl-14 h-11 md:h-12"
       />
       <SearchIcon className="absolute text-broly left-5 top-2/4 -translate-y-2/4" />
     </div>

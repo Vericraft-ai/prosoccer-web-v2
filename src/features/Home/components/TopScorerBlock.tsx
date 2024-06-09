@@ -1,62 +1,35 @@
-import React from "react";
-import Link from "next/link";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow
-} from "@/blocks/components/Table";
 import topScorersData from "@/mocks/TopScorerData.json";
-import { Badge } from "@/blocks/components/Badge";
 import Image from "next/image";
+import { BlockHeading } from "./BlockHeading";
+import { PlayerScoreCard } from "./PlayerScoreCard";
 
 export const TopScorerBlock = () => {
   return (
-    <div className="mt-10 ">
-      <div className="flex flex-row justify-between w-full">
-        <span className="text-broly">Top Scorer</span>
-        <Link href="/" className="text-vegeta">
-          View all
-        </Link>
-      </div>
+    <div className="lg:mt-10 w-full">
+      <BlockHeading heading="Top Scorers" linkToMore="/" />
 
-      <Table className="text-broly mt-4 border border-zeno/50 rounded-2xl border-separate">
-        <TableBody className="">
+      <div className="relative mt-5 border-[1.5px] border-white/50 bg-white/5 rounded-[20px] py-5 px-4">
+        <Image
+          src="/images/meteor.png"
+          alt="meteor"
+          className="absolute top-0 right-0 left-2/4 -translate-x-2/4"
+          width={215}
+          height={215}
+        />
+        <div className="space-y-1">
           {topScorersData?.map((player) => (
-            <TableRow
+            <PlayerScoreCard
               key={player.player_id}
-              className="border-none my-3 p-3 block w-full justify-between items-center"
-            >
-              <TableCell className="font-medium text-center">
-                {player.player_id}
-              </TableCell>
-              <TableCell className="font-medium ">
-                {
-                  <Image
-                    src="/GenericJersey.svg"
-                    alt="jersey"
-                    width={30}
-                    height={30}
-                  />
-                }
-              </TableCell>
-              <TableCell className="font-medium text-left ">
-                <div className="flex flex-col">
-                  <span>{player.player_name}</span>
-                  <span>
-                    {player.team_name} | {player.matches_played}
-                  </span>
-                </div>
-              </TableCell>
-              <TableCell>
-                <Badge className="bg-vegeta p-3 h-[30px] w-[40px]">
-                  {player.goals_scored}
-                </Badge>
-              </TableCell>
-            </TableRow>
+              rank={player.player_id}
+              goals={player.goals_scored}
+              matches={player.matches_played}
+              name={player.player_name}
+              position="FC"
+              src="/TeamLogo.svg"
+            />
           ))}
-        </TableBody>
-      </Table>
+        </div>
+      </div>
     </div>
   );
 };

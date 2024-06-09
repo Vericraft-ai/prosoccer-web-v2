@@ -1,16 +1,27 @@
 import { Web3AuthButton } from "@/features/Auth/component/Web3AuthButton";
 import { SearchInput } from "./SearchInput";
+import { UserNav } from "@/features/Home/components/UserNav";
+import { Button } from "@/blocks/components/Button";
+import { LogoOnly } from "@/blocks/icons/LogoOnly";
 
 type HeaderProps = {
-  children?: React.ReactNode;
+  search?: boolean;
+  isConnected?: boolean;
 };
 
-export const Header = ({ children }: HeaderProps) => {
+export const Header = ({ search, isConnected }: HeaderProps) => {
   return (
     <div className="flex w-full">
-      <div className="flex flex-row justify-between w-full items-center space-x-6">
-        {children}
-        <Web3AuthButton />
+      <div className="flex flex-col-reverse lg:flex-row justify-between w-full items-center gap-10 lg:gap-0">
+        {search && <SearchInput onSearch={(query) => console.log(query)} />}
+        <div className="flex items-center gap-6 lg:gap-11 justify-between lg:justify-end lg:self-end w-full">
+          <LogoOnly className="lg:hidden shrink-0" />
+          <div className="flex items-center gap-6 lg:gap-11">
+            {isConnected && <UserNav />}
+            {!isConnected && <Web3AuthButton />}
+            {isConnected && <Button>Buy</Button>}
+          </div>
+        </div>
       </div>
     </div>
   );
