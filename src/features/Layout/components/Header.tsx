@@ -7,9 +7,10 @@ import { LogoOnly } from "@/blocks/icons/LogoOnly";
 type HeaderProps = {
   search?: boolean;
   isConnected?: boolean;
+  children?: React.ReactNode;
 };
 
-export const Header = ({ search, isConnected }: HeaderProps) => {
+export const Header = ({ search, isConnected, children }: HeaderProps) => {
   return (
     <div className="flex w-full">
       <div className="flex flex-col-reverse lg:flex-row justify-between w-full items-center gap-10 lg:gap-0">
@@ -20,6 +21,7 @@ export const Header = ({ search, isConnected }: HeaderProps) => {
             {isConnected && <UserNav />}
             {!isConnected && <Web3AuthButton />}
             {isConnected && <Button>Buy</Button>}
+            {children}
           </div>
         </div>
       </div>
