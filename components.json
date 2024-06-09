@@ -7,11 +7,12 @@
     "config": "tailwind.config.ts",
     "css": "src/styles/globals.css",
     "baseColor": "slate",
-    "cssVariables": true,
+    "cssVariables": false,
     "prefix": ""
   },
   "aliases": {
     "components": "@/blocks",
-    "utils": "@/utils/cn"
+    "utils": "@/blocks/utils/cn",
+    "ui": "@/blocks/components"
   }
 }

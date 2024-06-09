@@ -1,34 +1,26 @@
-import React from "react";
-import { CardOne } from "./CardOne";
-import { Gamepad2, MoveRight } from "lucide-react";
-import { CardTwo } from "./CardTwo";
 import { Button } from "@/blocks/components/Button";
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { BlockHeading } from "./BlockHeading";
+import { CompetitionCard } from "./CompetitionCard";
+import { TeamEmblem } from "./TeamEmblem";
 
 export const CompetitionsBlock = () => {
   return (
-    <div className="">
-      <div className="flex flex-row justify-between w-full">
-        <span className="text-broly">Competitions</span>
-        <Link href="/" className="text-vegeta">
-          View all
-        </Link>
+    <div className="w-full">
+      <BlockHeading linkToMore="/" heading="Competitions" />
+      <div className="space-y-5 mt-5">
+        <CompetitionCard>
+          <TeamEmblem src="/TeamLogo.svg" name="ARL" />
+          <Button className="">2-5</Button>
+          <TeamEmblem src="/TeamLogo.svg" name="ARL" />
+        </CompetitionCard>
+        <CompetitionCard>
+          <TeamEmblem src="/TeamLogo.svg" name="Community tournament" />
+          <button className="">
+            <ArrowRight />
+          </button>
+        </CompetitionCard>
       </div>
-      <CardOne
-        logo={<Gamepad2 size={33} />}
-        text="Community tournament"
-        icon={<MoveRight />}
-      />
-      <CardTwo
-        logo={<Gamepad2 size={33} />}
-        text={["ARS", "AVFC"]}
-        bagde={<Button className="cursor-default">{"2-5"}</Button>}
-      />
-      <CardOne
-        logo={<Gamepad2 size={33} />}
-        text="Pro Soccer League"
-        icon={<MoveRight />}
-      />
     </div>
   );
 };

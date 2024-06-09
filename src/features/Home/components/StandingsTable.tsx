@@ -5,50 +5,41 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow
+  TableRow,
 } from "@/blocks/components/Table";
 import standingsResultMock from "@/mocks/StandingsData.json";
 import Image from "next/image";
 
 export const StandingsTable = () => {
   return (
-    <Table className="text-broly">
-      <TableHeader>
-        <TableRow className="!border-0 flex flex-row w-full justify-between">
-          <TableHead>Club</TableHead>
-          <TableHead>Points</TableHead>
-        </TableRow>
-      </TableHeader>
+    <div className="text-broly">
+      <div className="flex justify-between px-8 text-whis">
+        <span>Club</span>
+        <span>Points</span>
+      </div>
 
-      <TableBody>
+      <div className="space-y-2 mt-4">
         {standingsResultMock?.map((standing) => (
-          <TableRow
+          <div
             key={standing.id}
-            className="border-none rounded-xl bg-piccolo flex flex-row w-full my-3 p-3"
+            className="rounded-xl bg-piccolo flex justify-between items-center w-full py-4 px-8 last:bg-andriod"
           >
-            <TableCell width={50} className="font-medium text-center ">
-              {standing.id + "."}
-            </TableCell>
-            <TableCell width={50} className="font-medium text-center">
-              {
-                <Image
-                  src={"/TeamLogo.svg"}
-                  alt="logo"
-                  className="w-8 h-8"
-                  width={50}
-                  height={50}
-                />
-              }
-            </TableCell>
-            <TableCell className="font-medium text-center">
-              {standing.team_name}
-            </TableCell>
-            <TableCell className="text-right flex-grow">
-              {standing.points}
-            </TableCell>
-          </TableRow>
+            <div className="flex items-center gap-4">
+              <span>{standing.position}</span>
+              <Image
+                src={"/TeamLogo.svg"}
+                width={32}
+                height={32}
+                alt="team logo"
+                className="rounded-full object-cover"
+              />
+              <span>{standing.team_name}</span>
+            </div>
+
+            <div className="">{standing.points}</div>
+          </div>
         ))}
-      </TableBody>
-    </Table>
+      </div>
+    </div>
   );
 };

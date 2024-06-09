@@ -14,9 +14,16 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1536px",
       },
     },
+
+    screens: {
+      sm: "640px",
+      md: "768px",
+      lg: "1280px",
+    },
+
     extend: {
       colors: {
         goku: "rgb(var(--goku) / <alpha-value>)",
@@ -30,6 +37,9 @@ const config = {
         popo: "rgb(var(--popo) / <alpha-value>)",
         zeno: "rgb(var(--zeno) / <alpha-value>)",
         heles: "rgb(var(--heles) / <alpha-value>)",
+        chichi: "rgb(var(--chichi) / <alpha-value>)",
+        whis: "rgb(var(--whis) / <alpha-value>)",
+        andriod: "rgb(var(--andriod) / <alpha-value>)"
       },
       keyframes: {
         "accordion-down": {
@@ -49,7 +59,6 @@ const config = {
         "auto-fill-335": "repeat(auto-fill, minmax(335px, 1fr))",
         "auto-fit-100": "repeat(auto-fit, minmax(200px, 1fr))",
       },
-
     },
   },
   plugins: [require("tailwindcss-animate")],
