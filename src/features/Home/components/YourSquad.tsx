@@ -1,5 +1,8 @@
 import { Field } from "@/blocks/svgs/Field";
-import { Star } from "lucide-react";
+import { Rating } from "@/features/Shared/components/Rating";
+import SoccerLineUp from "react-soccer-lineup";
+import { homeTeam } from "@/mocks/LineUpData";
+import { LineUp } from "@/features/Shared/components/LineUp";
 
 export const YourSquad = () => {
   return (
@@ -10,15 +13,14 @@ export const YourSquad = () => {
           <span className="text-sm md:text-base">4-4-2-A</span>
         </div>
         <div className="flex gap-2 items-center">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Star className="w-[12.5px] h-[12.5px] stroke-frieza" key={index} />
-          ))}
-          <span>0</span>
+          <Rating rating={3} />
+          <span>3</span>
         </div>
       </div>
 
       <div className="mt-7">
-        <Field className="w-full h-full" />
+        {/* <Field className="w-full h-full" /> */}
+        <LineUp homeTeam={homeTeam} />
       </div>
     </section>
   );

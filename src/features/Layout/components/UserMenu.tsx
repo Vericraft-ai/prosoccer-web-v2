@@ -2,7 +2,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/blocks/components/popover";
+} from "@/blocks/components/Popover";
 import { AssetIcon } from "@/blocks/icons/AssetIcon";
 import { CopyIcon } from "@/blocks/icons/CopyIcon";
 import { DiscordIcon } from "@/blocks/icons/DiscordIcon";

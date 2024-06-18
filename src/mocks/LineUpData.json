@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "Emmanuel A.",
+    "position": "GK",
+    "team": "Chelsea",
+    "form": 100,
+    "rating": 5.0
+  },
+  {
+    "id": 2,
+    "name": "John B.",
+    "position": "DF",
+    "team": "Chelsea",
+    "form": 90,
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "name": "Cesar A.",
+    "position": "DF",
+    "team": "Chelsea",
+    "form": 80,
+    "rating": 4.0
+  },
+  {
+    "id": 4,
+    "name": "Kurt Z.",
+    "position": "DF",
+    "team": "Chelsea",
+    "form": 70,
+    "rating": 3.5
+  },
+  {
+    "id": 5,
+    "name": "Marcos A.",
+    "position": "DF",
+    "team": "Chelsea",
+    "form": 60,
+    "rating": 3.0
+  },
+  {
+    "id": 6,
+    "name": "N'Golo K.",
+    "position": "MF",
+    "team": "Chelsea",
+    "form": 50,
+    "rating": 2.5
+  },
+  {
+    "id": 7,
+    "name": "Jorginho",
+    "position": "MF",
+    "team": "Chelsea",
+    "form": 40,
+    "rating": 2.0
+  },
+  {
+    "id": 8,
+    "name": "Mason M.",
+    "position": "MF",
+    "team": "Chelsea",
+    "form": 30,
+    "rating": 1.5
+  },
+  {
+    "id": 9,
+    "name": "Reece J.",
+    "position": "DF",
+    "team": "Chelsea",
+    "form": 20,
+    "rating": 1.0
+  },
+  {
+    "id": 10,
+    "name": "Timo W.",
+    "position": "FW",
+    "team": "Chelsea",
+    "form": 10,
+    "rating": 0.5
+  },
+  {
+    "id": 11,
+    "name": "Kai H.",
+    "position": "FW",
+    "team": "Chelsea",
+    "form": 0,
+    "rating": 0.0
+  }
+]
