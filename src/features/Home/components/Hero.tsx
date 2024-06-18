@@ -2,6 +2,7 @@ import { buttonVariants } from "@/blocks/components/Button";
 import { cn } from "@/blocks/utils/cn";
 import Link from "next/link";
 import Image from "next/image";
+import { JoinProsoccerModal } from "./JoinProsoccerModal";
 
 export const Hero = () => {
   return (
@@ -14,9 +15,7 @@ export const Hero = () => {
           Your team does not have any next match. Join a competition and start
           winning prizes
         </p>
-        <Link href="/" className={cn(buttonVariants(), "bg-popo")}>
-          Join Pro Soccer League
-        </Link>
+        <JoinProsoccerModal />
       </div>
       <div className="hidden md:flex absolute self-end w-2/4 h-full right-0 justify-end">
         <Image

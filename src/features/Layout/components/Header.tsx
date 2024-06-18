@@ -14,6 +14,7 @@ export const Header = ({ search, isConnected, children }: HeaderProps) => {
   return (
     <div className="flex w-full">
       <div className="flex flex-col-reverse lg:flex-row justify-between w-full items-center gap-10 lg:gap-0">
+        {children}
         {search && <SearchInput onSearch={(query) => console.log(query)} />}
         <div className="flex items-center gap-6 lg:gap-11 justify-between lg:justify-end lg:self-end w-full">
           <LogoOnly className="lg:hidden shrink-0" />

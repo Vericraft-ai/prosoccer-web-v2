@@ -10,6 +10,7 @@ import {
 } from "@/blocks/components/Table";
 import Image from "next/image";
 import matches from "@/mocks/MatchData.json";
+import { MatchDetailModal } from "./MatchDetailModal";
 
 export const MatchesTable = () => {
   return (
@@ -18,7 +19,7 @@ export const MatchesTable = () => {
         <TableBody className="">
           {matches.map((m) => (
             <TableRow key={m.matchId}>
-              <TableCell>
+              <TableCell className="rounded-s-lg">
                 <div className="flex items-center gap-4">
                   <Image
                     src={m.homeTeamIcon}
@@ -47,8 +48,8 @@ export const MatchesTable = () => {
                   />
                 </div>
               </TableCell>
-              <TableCell className="text-right">
-                <Button className="bg-zeno/15 h-8">Full - Time</Button>
+              <TableCell className="text-right rounded-e-lg">
+                <MatchDetailModal matchId={m.matchId} />
               </TableCell>
             </TableRow>
           ))}

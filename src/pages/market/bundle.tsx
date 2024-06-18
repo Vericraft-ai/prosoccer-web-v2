@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <Wrapper>
       <div className="w-full">
-        <Header>
+        {/* <Header >
           <HeaderLinks />
-        </Header>
+        </Header> */}
         <MarketCards />
       </div>
     </Wrapper>

@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "@/features/Layout/components/Header";
 import { Wrapper } from "@/features/Layout/components/Wrapper";
-import { LineUp } from "@/features/Squad/components/LineUp";
+import { LineUp } from "@/features/Shared/components/LineUp";
+import { SquadTabs } from "@/features/Squad/components/SquadTabs";
+import { ProspectView } from "@/features/Squad/components/ProspectView";
+import { SquadHeader } from "@/features/Squad/components/SquadHeader";
 
-const squad = () => {
+const Squad = () => {
+  const [isConnected, setIsConnected] = useState(true);
+  const [hasPlayers, setHasPlayers] = useState(true);
+
   return (
     <Wrapper>
-      <Header>
-        <div className="w-full flex flex-col items-center justify-center">
-          <div className="text-broly text-lg text-center">
-            The easiest way to start is to buy a bundle of players. So go to our
-            marketplace, explore the bundles and get your first squad!
-          </div>
-          <LineUp />
-        </div>
-      </Header>
+      {!hasPlayers && <Header isConnected={isConnected} search />}
+      {hasPlayers && <SquadHeader />}
+      {!hasPlayers && <ProspectView />}
+      {hasPlayers && <SquadTabs />}
     </Wrapper>
   );
 };
 
-export default squad;
+export default Squad;

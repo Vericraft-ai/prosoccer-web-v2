@@ -14,7 +14,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   }, [query, onSearch]);
 
   return (
-    <div className="relative w-full lg:w-2/4">
+    <div className="relative w-full">
       <Input
         type="search"
         placeholder="Search match"

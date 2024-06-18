@@ -25,6 +25,9 @@ const config = {
     },
 
     extend: {
+      dropShadow: {
+        playerBtn: "0px 0px 10.88px 0px rgba(0, 0, 0, 0.1)",
+      },
       colors: {
         goku: "rgb(var(--goku) / <alpha-value>)",
         trunks: "rgb(var(--trunks) / <alpha-value>)",
@@ -39,7 +42,14 @@ const config = {
         heles: "rgb(var(--heles) / <alpha-value>)",
         chichi: "rgb(var(--chichi) / <alpha-value>)",
         whis: "rgb(var(--whis) / <alpha-value>)",
-        andriod: "rgb(var(--andriod) / <alpha-value>)"
+        andriod: "rgb(var(--andriod) / <alpha-value>)",
+        quitela: "rgb(var(--quitela) / <alpha-value>)",
+        kettol: "rgb(var(--kettol) / <alpha-value>)",
+        barry: "rgb(var(--barry) / <alpha-value>)",
+        tagoma: "rgb(var(--tagoma) / <alpha-value>)",
+        c6: "rgb(var(--c6) / <alpha-value>)",
+        dodoria: "rgb(var(--dodoria) / <alpha-value>)",
+        young: "rgb(var(--young) / <alpha-value>)",
       },
       keyframes: {
         "accordion-down": {

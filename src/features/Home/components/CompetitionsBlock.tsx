@@ -10,7 +10,11 @@ export const CompetitionsBlock = () => {
       <BlockHeading linkToMore="/" heading="Competitions" />
       <div className="space-y-5 mt-5">
         <CompetitionCard>
-          <TeamEmblem src="/TeamLogo.svg" name="ARL" />
+          <TeamEmblem
+            src="/TeamLogo.svg"
+            name="ARL"
+            className="flex-row-reverse"
+          />
           <Button className="">2-5</Button>
           <TeamEmblem src="/TeamLogo.svg" name="ARL" />
         </CompetitionCard>
