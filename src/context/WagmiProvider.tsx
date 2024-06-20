@@ -1,17 +1,20 @@
-import { getDefaultConfig } from "@rainbow-me/rainbowkit";
-import { polygonAmoy } from "wagmi/chains";
-import { WagmiProvider as OriginalWagmiProvider } from "wagmi";
+import { WagmiProvider as OriginalWagmiProvider, State } from "wagmi";
 import { ProviderType } from "./@types";
+import { createWeb3Modal } from '@web3modal/wagmi/react'
+import {config, projectId} from './WalletConnectProvider/config'
 
-const config = getDefaultConfig({
-  appName: "Prosoccer",
-  projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || "PROVIDE_PROJECT_ID",
-  chains: [polygonAmoy],
-  ssr: true,
-});
+if (!projectId) throw new Error('Project ID is not defined')
 
-export const WagmiProvider = ({ children }: ProviderType) => {
+ // Create modal
+ createWeb3Modal({
+  wagmiConfig: config,
+  projectId,
+  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  enableOnramp: true // Optional - false as default
+})
+
+export const WagmiProvider = ({ children, initialState }: ProviderType & {initialState?: State}) => {
   return (
-    <OriginalWagmiProvider config={config}>{children}</OriginalWagmiProvider>
+    <OriginalWagmiProvider config={config} initialState={initialState}>{children}</OriginalWagmiProvider>
   );
 };
