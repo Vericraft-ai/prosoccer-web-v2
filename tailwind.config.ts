@@ -25,6 +25,10 @@ const config = {
     },
 
     extend: {
+      backgroundImage: {
+        "prosoccer-gradient":
+          "linear-gradient(136.41deg, #02D3FF 0%, #3D41F4 39.11%, #3D41F4 52.98%, #3D41F4 61.44%, #3D41F4 67.1%, #02D3FF 96.28%)",
+      },
       dropShadow: {
         playerBtn: "0px 0px 10.88px 0px rgba(0, 0, 0, 0.1)",
       },
@@ -50,6 +54,7 @@ const config = {
         c6: "rgb(var(--c6) / <alpha-value>)",
         dodoria: "rgb(var(--dodoria) / <alpha-value>)",
         young: "rgb(var(--young) / <alpha-value>)",
+        marron: "rgb(var(--marron) / <alpha-value>)",
       },
       keyframes: {
         "accordion-down": {

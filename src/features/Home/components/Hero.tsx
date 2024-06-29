@@ -1,6 +1,3 @@
-import { buttonVariants } from "@/blocks/components/Button";
-import { cn } from "@/blocks/utils/cn";
-import Link from "next/link";
 import Image from "next/image";
 import { JoinProsoccerModal } from "./JoinProsoccerModal";
 

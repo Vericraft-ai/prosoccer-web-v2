@@ -1,10 +1,10 @@
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectGroup,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/blocks/components/Select";
 
 export const SquadMenuDropdown = () => {

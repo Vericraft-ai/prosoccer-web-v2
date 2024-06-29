@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/blocks/components/Button";
 
 import {
@@ -11,10 +9,9 @@ import {
   SheetTrigger,
 } from "@/blocks/components/Sheet";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import { RewardsTabs } from "./RewardsTabs";
+import { DetailTabs } from "./DetailTabs";
 import { TeamEmblem } from "./TeamEmblem";
 import { TeamLineup } from "./TeamLineup";
-import { DetailTabs } from "./DetailTabs";
 
 type Props = {
   matchId: string;

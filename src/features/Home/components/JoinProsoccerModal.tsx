@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/blocks/components/Button";
 
 import {
