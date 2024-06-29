@@ -1,18 +1,18 @@
 import { WagmiProvider } from "./WagmiProvider";
 import { ReactQueryProvider } from "./ReactQueryProvider";
-import { RainbowKitProvider } from "./RainbowKitProvider";
+import { State } from 'wagmi'
 
 export function Providers({
-  children,
-  token,
+  initialState,
+  children
 }: {
-  children: React.ReactNode;
-  token?: string;
+  initialState?: State
+  children: React.ReactNode
 }) {
   return (
-    <WagmiProvider>
+    <WagmiProvider initialState={initialState}>
       <ReactQueryProvider>
-        <RainbowKitProvider token={token}>{children}</RainbowKitProvider>
+        {children}
       </ReactQueryProvider>
     </WagmiProvider>
   );

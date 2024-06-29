@@ -1,16 +1,19 @@
 import "@/styles/globals.css";
 import type { AppContext, AppProps } from "next/app";
-import "@rainbow-me/rainbowkit/styles.css";
 import { Providers } from "@/context";
 import { initGetInitialProps } from "@/features/Layout/utils/nextProps";
+import { cookieToInitialState, State } from 'wagmi'
+import { config } from '@/context/WalletConnectProvider/config'
 
 type AppPropsExtended = AppProps & {
   token?: string;
+  cookies: string;
 };
 
-export default function App({ Component, pageProps, token }: AppPropsExtended) {
+export default function App({ Component, pageProps, token, cookies }: AppPropsExtended) {
+  const initialState = cookieToInitialState(config, cookies) as State
   return (
-    <Providers token={token}>
+    <Providers initialState={initialState}>
       <Component {...pageProps} />
     </Providers>
   );
@@ -18,6 +21,5 @@ export default function App({ Component, pageProps, token }: AppPropsExtended) {
 
 App.getInitialProps = async (context: AppContext) => {
   const props = await initGetInitialProps(context);
-  console.log(props);
   return initGetInitialProps(context);
 };
