@@ -1,12 +1,3 @@
-import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/blocks/components/Table";
 import standingsResultMock from "@/mocks/StandingsData.json";
 import Image from "next/image";
 

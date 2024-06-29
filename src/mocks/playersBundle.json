@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Tobi A",
+    "image": "/images/hazard.png",
+    "role": "RB",
+    "current": "12",
+    "potential": "15",
+    "specialAbility": "12"
+  },
+  {
+    "id": 2,
+    "name": "Tobi B",
+    "image": "/images/hazard.png",
+    "role": "CB",
+    "current": "12",
+    "potential": "15",
+    "specialAbility": "12"
+  },
+  {
+    "id": 3,
+    "name": "Tobi C",
+    "image": "/images/gk.png",
+    "role": "GK",
+    "current": "12",
+    "potential": "15",
+    "specialAbility": "12"
+  },
+  {
+    "id": 4,
+    "name": "Tobi D",
+    "image": "/images/hazard.png",
+    "role": "CM",
+    "current": "12",
+    "potential": "15",
+    "specialAbility": "12"
+  },
+  {
+    "id": 5,
+    "name": "Tobi E",
+    "image": "/images/hazard.png",
+    "role": "ST",
+    "current": "12",
+    "potential": "15",
+    "specialAbility": "12"
+  }
+]

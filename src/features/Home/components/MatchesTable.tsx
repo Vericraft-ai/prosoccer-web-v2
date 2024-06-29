@@ -1,15 +1,12 @@
 import { Button } from "@/blocks/components/Button";
 import {
-  TableCaption,
-  TableHeader,
-  TableRow,
-  TableHead,
+  Table,
   TableBody,
   TableCell,
-  Table,
+  TableRow,
 } from "@/blocks/components/Table";
-import Image from "next/image";
 import matches from "@/mocks/MatchData.json";
+import Image from "next/image";
 import { MatchDetailModal } from "./MatchDetailModal";
 
 export const MatchesTable = () => {

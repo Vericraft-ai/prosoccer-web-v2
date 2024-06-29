@@ -1,16 +1,13 @@
-import { Button } from "@/blocks/components/Button";
 import {
   Table,
   TableBody,
-  TableRow,
   TableCell,
-  TableHeader,
   TableHead,
+  TableHeader,
+  TableRow,
 } from "@/blocks/components/Table";
-import { MatchDetailModal } from "./MatchDetailModal";
-import Image from "next/image";
-import lineups from "@/mocks/LineUpData.json";
 import { FlashIcon } from "@/blocks/icons/FlashIcon";
+import lineups from "@/mocks/LineUpData.json";
 
 export const LineupTable = () => {
   return (

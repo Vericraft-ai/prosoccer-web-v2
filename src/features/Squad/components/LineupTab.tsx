@@ -1,10 +1,9 @@
-import { AddPlayerBtn } from "@/features/Shared/components/AddPlayerBtn";
 import { Rating } from "@/features/Shared/components/Rating";
 import Image from "next/image";
-import { JerseyComponent } from "./JerseyComponent";
-import { LineupTable } from "./LineupTable";
 import { AddPlayerModal } from "./AddPlayerModal";
 import { FormationModal } from "./FormationModal";
+import { JerseyComponent } from "./JerseyComponent";
+import { LineupTable } from "./LineupTable";
 
 export const LineupTab = () => {
   return (

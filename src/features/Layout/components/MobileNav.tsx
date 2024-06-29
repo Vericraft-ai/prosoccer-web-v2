@@ -8,7 +8,7 @@ export const MobileNav = () => {
   const pathname = router.pathname;
 
   return (
-    <nav className="fixed px-3 bottom-0 w-full bg-bulma h-[82px] lg:hidden flex md:gap-11 items-center justify-between md:justify-center border-t-[0.5px] border-c6">
+    <nav className="fixed z-50 px-3 bottom-0 w-full bg-bulma h-[82px] lg:hidden flex md:gap-11 items-center justify-between md:justify-center border-t-[0.5px] border-c6">
       {sidebarMenus.slice(0, -1)?.map(({ Icon, href, title }, key) => (
         <Link
           key={key}
@@ -24,9 +24,13 @@ export const MobileNav = () => {
               height={17}
               className={cn(
                 "stroke-frieza",
-                ["Home", "Squad"].includes(title) &&  "fill-frieza",
-                pathname === href && !["Home", "Squad"].includes(title)  && "stroke-broly",
-                pathname === href && ["Home", "Squad"].includes(title)  && "fill-broly" 
+                ["Home", "Squad"].includes(title) && "fill-frieza",
+                pathname === href &&
+                  !["Home", "Squad"].includes(title) &&
+                  "stroke-broly",
+                pathname === href &&
+                  ["Home", "Squad"].includes(title) &&
+                  "fill-broly"
               )}
             />
             <span

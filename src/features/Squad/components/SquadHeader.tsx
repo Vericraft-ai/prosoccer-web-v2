@@ -1,4 +1,3 @@
-import { Button } from "@/blocks/components/Button";
 import { LogoOnly } from "@/blocks/icons/LogoOnly";
 import { UserNav } from "@/features/Home/components/UserNav";
 import { HeaderDropdown } from "./HeaderDropdown";

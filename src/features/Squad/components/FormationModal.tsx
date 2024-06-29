@@ -1,12 +1,9 @@
+import { Button } from "@/blocks/components/Button";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTrigger,
 } from "@/blocks/components/Dialog";
-import { AddPlayerBtn } from "@/features/Shared/components/AddPlayerBtn";
-import { LineupTable } from "./LineupTable";
-import { Button } from "@/blocks/components/Button";
 
 type Props = {
   formation: string;

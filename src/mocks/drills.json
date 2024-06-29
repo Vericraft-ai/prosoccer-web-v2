@@ -1,0 +1,130 @@
+[
+  {
+    "title": "Elite Finisher",
+    "attributes": [
+      "Shooting",
+      "Finishing",
+      "Creativity",
+      "Passing",
+      "Shooting",
+      "Passing",
+      "Creativity",
+      "Finishing"
+    ],
+    "condition": 85,
+    "players": 18,
+    "cost": 15
+  },
+  {
+    "title": "Master Playmaker",
+    "attributes": [
+      "Creativity",
+      "Passing",
+      "Finishing",
+      "Shooting",
+      "Passing",
+      "Creativity",
+      "Shooting",
+      "Finishing"
+    ],
+    "condition": 42,
+    "players": 20,
+    "cost": 13
+  },
+  {
+    "title": "Dynamic Shooter",
+    "attributes": [
+      "Shooting",
+      "Creativity",
+      "Passing",
+      "Finishing",
+      "Shooting",
+      "Finishing",
+      "Creativity",
+      "Passing"
+    ],
+    "condition": -15,
+    "players": 22,
+    "cost": 8
+  },
+  {
+    "title": "Passing Maestro",
+    "attributes": [
+      "Passing",
+      "Creativity",
+      "Finishing",
+      "Shooting",
+      "Passing",
+      "Creativity",
+      "Shooting",
+      "Finishing"
+    ],
+    "condition": 76,
+    "players": 15,
+    "cost": 19
+  },
+  {
+    "title": "Creative Genius",
+    "attributes": [
+      "Creativity",
+      "Passing",
+      "Shooting",
+      "Finishing",
+      "Creativity",
+      "Finishing",
+      "Shooting",
+      "Passing"
+    ],
+    "condition": -53,
+    "players": 25,
+    "cost": 7
+  },
+  {
+    "title": "Ultimate Striker",
+    "attributes": [
+      "Finishing",
+      "Shooting",
+      "Creativity",
+      "Passing",
+      "Finishing",
+      "Shooting",
+      "Creativity",
+      "Passing"
+    ],
+    "condition": 92,
+    "players": 17,
+    "cost": 18
+  },
+  {
+    "title": "Complete Forward",
+    "attributes": [
+      "Finishing",
+      "Shooting",
+      "Passing",
+      "Creativity",
+      "Finishing",
+      "Creativity",
+      "Passing",
+      "Shooting"
+    ],
+    "condition": 35,
+    "players": 19,
+    "cost": 10
+  },
+  {
+    "title": "Versatile Attacker",
+    "attributes": [
+      "Shooting",
+      "Passing",
+      "Finishing",
+      "Creativity",
+      "Shooting",
+      "Creativity",
+      "Finishing",
+      "Passing"
+    ],
+    "condition": 60,
+    "players": 23,
+    "cost": 12
+  }
+]

@@ -1,6 +1,5 @@
 import { Field } from "@/blocks/svgs/Field";
 import { Rating } from "@/features/Shared/components/Rating";
-import SoccerLineUp from "react-soccer-lineup";
 import { homeTeam } from "@/mocks/LineUpData";
 import { LineUp } from "@/features/Shared/components/LineUp";
 

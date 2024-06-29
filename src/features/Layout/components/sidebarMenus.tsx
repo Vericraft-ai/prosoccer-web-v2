@@ -20,7 +20,7 @@ export const sidebarMenus: SidebarMenuTypes = [
   {
     title: "Market Place",
     Icon: ActivityIcon,
-    href: "/market/bundle",
+    href: "/market",
   },
   {
     title: "Training",

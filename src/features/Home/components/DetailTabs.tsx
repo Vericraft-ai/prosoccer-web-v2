@@ -4,10 +4,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/blocks/components/Tabs";
-import { LogoOnly } from "@/blocks/icons/LogoOnly";
-import { cn } from "@/blocks/utils/cn";
-import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
-import { StatBar } from "./StatBar";
 import { StatsTab } from "./StatsTab";
 import { SummaryTab } from "./SummaryTab";
 

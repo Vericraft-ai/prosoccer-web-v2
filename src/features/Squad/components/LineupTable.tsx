@@ -1,13 +1,13 @@
 import { Progress } from "@/blocks/components/Progress";
 import {
-  TableHeader,
-  TableRow,
-  TableHead,
+  Table,
   TableBody,
   TableCell,
-  Table,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/blocks/components/Table";
-import { FlashIcon } from "@/blocks/icons/FlashIcon";
+import { RoleBadge } from "@/features/Shared/components/RoleBadge";
 import lineups from "@/mocks/LineUpData.json";
 import { GripVertical } from "lucide-react";
 
@@ -51,9 +51,7 @@ export const LineupTable = () => {
                 {l.name}
               </TableCell>
               <TableCell className="px-4  border-t-[0.91px] border-c6/[0.26]">
-                <span className="text-[0.5rem] text-white bg-dodoria border border-goku rounded w-[27px] h-[13px] flex justify-center items-center">
-                  RB
-                </span>
+                <RoleBadge role="RB" />
               </TableCell>
               <TableCell className="px-4 border-t-[0.91px] border-c6/[0.26]">
                 0
